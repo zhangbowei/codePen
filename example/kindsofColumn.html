@@ -2,83 +2,102 @@
 <html lang="en">
 
 <head>
-<style>
-* {
-  box-sizing: border-box;
-}
-.content {
-  width: 80%;
-  height: 300px;
-  float: left;
-  border: 1px solid #4C4A91;
-  margin-right: 10px;
-}
-.list {
-  margin-left: 10px;
-  border: 1px solid #A26467;
-  width: 200px;
-  float: right;
-  height: 20px;
-}
-.footer {
-  width: 100%;
-  height: 20px;
-  border: 1px solid #5D5D5D;
-  margin-top: 10px;
-  overflow: hidden;
-}
-.header {
-  border: 1px solid #5C7858;
-  margin-bottom: 10px;
-  padding: 10px;
-  overflow: hidden;
-}
-.login {
-  float: left;
-  border: 1px solid #8E505B;
-  height: 100px;
-  width: 100px;
-}
-.user {
-  float: right;
-  border: 1px solid #373737;
-  width: 100px;
-  height: 20px;
-  margin-top: 80px;
+  <style type="text/css">
+  * {
+    box-sizing: border-box;
+  }
+    .header {
+      height: 70px;
+      border: 1px solid #5C7858;
+      overflow: hidden;
+    }
 
-}
-.main {
-  overflow: hidden;
-}
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      border: 1px solid #8E505B;
+      float: left;
+    }
 
-.container {
-  padding: 10px;
-  border-color: #989898;
-  display: none;
-}
-.init {
-  width: 100px;
-  height: 30px;
-  border-color: #989898;
-}
+    .username {
+      width: 140px;
+      height: 20px;
+      margin-right: 10px;
+      margin-top: 40px;
+      float: right;
+      border: 1px solid #373737;
+    }
 
-</style>
+    .main {
+      margin-top: 5px;
+      overflow: hidden;
+    }
+/*
+    .main:after {
+      clear: both;
+      content: '';
+      visibility: hidden;
+      display: block;
+      width: 0;
+      height: 0;
+    }*/
 
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
+
+    .column {
+      height: 350px;
+      width: 100%;
+    }
+
+    .aside {
+      border: 1px solid #A45C67;
+      float: left;
+      width: 200px;
+      height: 25px;
+      margin-left: -200px;
+    }
+
+    .footer {
+      height: 20px;
+      border: 1px solid #5D5D5D;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .real {
+      height: 350px;
+      margin-right: 200px;
+      border: 1px solid #4C4B8F;
+    }
+
+    .box {
+      padding: 5px;
+      border: 1px solid #9D9D9D;
+    }
+  </style>
 </head>
 
 <body>
-  <button id="initBox" class="init">点击显示</button>
-<div id="box" class="container">
-        <div class="header">
-          <div class="login"></div>
-          <div class="user"></div>
-        </div>
-      <div class="main">
-        <div class="content"></div>
-        <div class="list"></div>
+  <div class="box">
+    <div class="header">
+      <div class="logo">logo</div>
+      <div class="username">用户名</div>
+    </div>
+    <div class="main">
+      <div class="left column">
+        <div class="real">content - 自适应宽度</div>
       </div>
-        <div class="footer"></div>
-</div>
-<script src="./main.js"></script>
+      <div class="right aside">aside - 定宽200px</div>
+    </div>
+    <div class="footer">footer</div>
+  </div>
 </body>
+
 </html>

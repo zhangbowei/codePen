@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 30px;
+            border-bottom: 5px solid #F60;
+        }
+
+        ul:after {
+            clear: both;
+            content: '.';
+            display: block;
+            width: 0;
+            height: 0;
+            visibility: hidden;
+        }
+
+        li {
+            float: left;
+            /*margin-top: 20px;*/
+            position: relative;
+        }
+
+        .subNav {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 120px;
+            height: 0;
+            overflow: hidden
+        }
+
+        .subNav li a {
+            background: #ddd
+        }
+
+        .subNav li a:hover {
+            background: #efefef
+        }
+
+        a {
+            /*height: 30px;*/
+            line-height: 30px;
+            width: 120px;
+            background-color: #ccc;
+            margin-bottom: 1px;
+            text-indent: 10px;
+            /*padding-left: 10px;*/
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            /*background: url(photo/btnBg.png);*/
+        }
+
+        .on,
+        a:hover {
+            color: #fff;
+            background-color: #F60;
+            background-position: 0 -30px;
+            height: 40px;
+            margin-top: -10px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <ul>
+        <li><a class="on" href="#">首页</a>
+            <ul class="subNav">
+                <li><a href="#">二级菜单</a></li>
+                <li><a href="#">二级菜单</a></li>
+                <li><a href="#">二级菜单</a></li>
+                <li><a href="#">二级菜单</a></li>
+            </ul>
+        </li>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">首页</a></li>
+    </ul>
+    <script src="vendor/jquery-1.2.6.min.js"></script>
+    <script>
+        $(function () {
+            $('a').hover(
+                function () {
+                    $(this).stop().animate({ "width": "160px" }, 200);
+                },
+                function () {
+                    $(this).stop().animate({ "width": "120px" }, 200);
+                }
+            )
+        });
+        window.onload = function () {
+            var aLi = document.getElementsByTagName('li');
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].onmouseover = function () {
+                    //鼠标经过一级菜单，二级菜单动画下拉显示出来
+                    var ul = this.getElementsByTagName("ul");
+                    ul[0].style.overflow = 'visible';
+                }
+                //鼠标离开菜单，二级菜单动画收缩起来。
+                aLi[i].onmouseout = function () {
+                    var ul = this.getElementsByTagName("ul");
+                    ul[0].style.overflow = 'hidden';
+                }
+            }
+        }
+        // window.onload = function () {
+        //     var aA = document.getElementsByTagName('a');
+        //     for (var i = 0; i < aA.length; i++) {
+        //         aA[i].onmouseover = function () {
+        //             var that = this;
+        //             that.time = setInterval(() => {
+        //                 that.style.width = that.offsetWidth + 8 + "px";
+        // //offsetWidth：对象整体的实际宽度，包滚动条等边线，会随对象显示大小的变化而改变。
+        //                 if (that.offsetWidth >= 160) {
+        //                     clearInterval(that.time);
+        //                 }
+        //             }, 30);
+        //         }
+        //     }
+        // }
+    </script>
+</body>
+
+</html>
