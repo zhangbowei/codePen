@@ -1,168 +1,213 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700|PT+Mono);
 body {
-  background: LightCoral;
-  font-family: Lato, sans-serif;
-  font-size: 15px;
-  margin: 0;
+    font: 12px Arial,"微软雅黑";
+    overflow-x: hidden;
+    overflow-y: scroll;
+    line-height: 24px;
+    color: #666;
 }
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+
+*:before, *:after {
+    transition: ease-in-out .5s;
 }
-*:focus {
-  outline: none;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}*/
-main {
-  min-height: 100vh;
-  display: flex;
-  display: -webkit-flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-.title {
-  color: #fff;
-  text-align: center;
-  font-weight: 300;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-  font-size: 2.8em;
-  margin-top: 1.5em;
-}
-.title small {
-  display: block;
-  font-size: 0.6em;
-  margin-top: 0.4em;
-}
-.credits {
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-  margin-top: 2em;
-  font-size: 0.8em;
-  opacity: 0.5;
-}
-.window {
-  width: 547px;
-  background: GhostWhite;
-  border-radius: 0.3rem;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+
+.container {
+  clear: both;
   overflow: hidden;
+  margin-bottom: 24px;
 }
-.window .window-header {
-  height: 37px;
-  background: Gainsboro;
-  position: relative;
+
+.container > section {
+    margin-bottom: 24px;
 }
-.window .window-header .action-buttons {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  margin-top: -5px;
-  width: 10px;
-  height: 10px;
-  background: Crimson;
-  border-radius: 50%;
-  box-shadow: 15px 0 0 Orange,
-				30px 0 0 LimeGreen;
+
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  clear: both;
 }
-.window .window-header .language {
-  display: inline-block;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  margin-top: -10px;
-  height: 21px;
-  padding: 0 1em;
-  text-align: right;
-  -webkit-appearance: none;
-  appearance: none;
-  border: none;
-  background: transparent;
-  font-family: Lato, sans-serif;
-  color: DimGrey;
+
+@media only screen and (max-width: 1280px) {
+  .wrapper {
+    width: 1024px;
+  }
 }
-.window .window-header .language:before {
-  content: 'asd';
+
+.crumbs_wrap {
+    text-align: center;
+    z-index: 10;
 }
-.window .window-header .language:hover {
-  background: rgba(0, 0, 0, 0.1);
+
+.wow {
+    visibility: hidden;
 }
-.window .window-body {
-  position: relative;
-  height: 300px;
+
+.triangle:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    height: 0;
+    width: 0;
+    display: block;
+    border: 8px transparent solid;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-color: #2678f2;
+    z-index: 10;
 }
-.window .window-body .code-input,
-.window .window-body .code-output {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  border: none;
-  font-family: 'PT Mono', monospace;
-  font-size: 0.8rem;
-  background: transparent;
-  white-space: pre-wrap;
-  line-height: 1.5em;
-  word-wrap: break-word;
+
+.box {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px #f2f2f2 solid;
+    position: relative;
+    font-size: 12px;
 }
-.window .window-body .code-input {
-  opacity: 0.7;
-  margin: 0;
-  color: #999;
-  resize: none;
+
+h1, h2, h3, h4 {
+    line-height: 24px;
+    font-weight: normal;
+    color: #333;
+    text-rendering: optimizelegibility;
 }
-.window .window-body .code-output {
-  pointer-events: none;
-  z-index: 3;
-  margin: 0;
-  overflow-y: auto;
+
+h3 {
+  font-size: 16px;
 }
-.window .window-body .code-output code {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 1rem;
-  display: block;
-  color: #666;
-  font-size: 0.8rem;
-  font-family: 'PT Mono', monospace;
+
+.crumbs_wrap h3 {
+    position: relative;
+    border-bottom: 1px #eee solid;
+    padding-bottom: 12px;
+    margin: 0 -20px 20px;
 }
-a.token {
-  text-decoration: none;
+
+.crumbs_wrap h3:before {
+    position: absolute;
+    content: '';
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    width: 36px;
+    height: 3px;
+    background-color: #2678f2;
+    margin: auto;
 }
-.token.selector,
-.token.punctuation,
-.token.keyword {
-  color: PaleVioletRed;
+
+.crumbs_wrap>ul>li.current-cat {
+    border: 1px #eee solid;
 }
-.token.property,
-.token.number,
-.token.string,
-.token.punctuation,
-.token.tag-id {
-  color: DodgerBlue;
+
+li {
+    list-style-type: none;
 }
-.token.function,
-.token.attr-name {
-  color: CadetBlue;
+
+.crumbs_wrap ul>li {
+    position: relative;
 }
-.token.atrule .atrule-id {
-  color: BlueViolet;
+
+.crumbs_wrap>ul>li {
+    display: inline-block;
+    padding: 4px 20px;
+    color: #999;
+    white-space: nowrap; /*规定段落中的文本不进行换行：*/
 }
-.token.boolean {
-  color: LightSlateGray;
+
+/*权重 0 0 1 3 */
+a {
+    color: #999;
+    text-decoration: none;
 }
-.token.comment {
-  color: DarkGrey;
+
+a:hover {
+    color: #2678f2;
 }
-.language-php .variable {
-  color: CadetBlue;
+
+.gallery_content.gallery_list ul {
+    margin-right: -20px;
+}
+
+.layout_ul {
+    font-size: 0;
+}
+
+.gallery_list ul li {
+    width: 25%;
+}
+
+.layout_li {
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.postgrid {
+    margin: 0 20px 20px 0;
+    overflow: hidden;
+}
+
+.iframe-wrap {
+    position: relative;
+    height: 0;
+    padding-top: 56.25%;
+    overflow: hidden;
+    border: 1px #eee solid;
+}
+
+.cover-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border: 0 !important;
+    z-index: 1;
+}
+
+.iframe-wrap iframe {
+    width: 201%;
+    height: 201%;
+    border: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    transform: scale(0.5);
+    transform-origin: top left;
+    transition: opacity 0.4s ease;
+}
+
+.grelated_posts .gallery_main, .gallery_list .gallery_main, .video_list .video_main {
+    border: 1px #f4f4f4 solid;
+    background-color: #fff;
+    padding: 4px 12px;
+}
+
+.postgrid .homeinfo {
+    margin: 2px 0 12px;
+}
+
+.homeinfo a, .homeinfo {
+    color: #999;
+}
+
+.homeinfo .category {
+    padding-right: 6px;
+    position: relative;
+    display: inline-block;
+    max-width: 50%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.homeinfo .category:before {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 12px;
+    background-color: #ddd;
+    right: 1px;
+    top: 6px;
 }

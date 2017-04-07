@@ -1,4 +1,9 @@
-function swapDomNode(nodeA, nodeB) {
+var itemB = document.querySelector('ul > li')
+var itemA = document.getElementsByTagName('ul')[1].getElementsByTagName('li')[2]
+
+swapDomNode([itemA, itemB]);
+
+function swapDomNode(dataArr, fn) {
     function getRelatedNode(node) {
         const parent = node.parentNode;
 
@@ -21,13 +26,16 @@ function swapDomNode(nodeA, nodeB) {
         behind ? parent.insertBefore(node, behind) : parent.appendChild(node);
     }
 
-    const nodeArr = [nodeA, nodeB];
+    const nodeArr = dataArr.slice();
+    const swapRule = fn ? fn : function(index, len) {
+        return index === len - 1 ? 0 : index + 1;
+    }
     const relatedArr = nodeArr.reduce(function (prev, node) {
         prev.push(getRelatedNode(node));
         return prev;
     }, []);
 
     nodeArr.forEach(function (node, index) {
-        insertNode(node, relatedArr[1 - index]);
+        insertNode(node, relatedArr[swapRule(index, nodeArr.length)]);
     });
 }

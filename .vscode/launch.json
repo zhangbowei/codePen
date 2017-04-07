@@ -4,20 +4,14 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "Attach",
-            "type": "chrome",
-            "request": "launch",
-            "url": "http://localhost:8080/index.html",
-            "userDataDir": "${workspaceRoot}/.vscode/chrome",
-            "webRoot": "${workspaceRoot}"
-        },
-        {
+       {
+            "name": "Launch Program",
             "type": "node",
-            "request": "attach",
-            "name": "Attach to Process",
-            "address": "localhost",
-            "port": 5858
+            "request": "launch",
+            "program": "${workspaceRoot}/updatePathData.js",
+            "cwd": "${workspaceRoot}",
+            "args": [
+            ]
         }
     ]
 }

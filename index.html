@@ -2,11 +2,29 @@
 <html lang="en">
 
 <head>
+	<link rel="stylesheet" type="text/css" href="vendor/eric-meyer-reset.min.css" />
+	<link rel="stylesheet" type="text/css" href="vendor/animation.css" />
 	<link rel="stylesheet" type="text/css" href="./sketch.css" />
 </head>
 
 <body>
-
+	<section class="container wrapper">
+		<section class="crumbs_wrap box triangle wow bounceInUp animated" style="visibility: visible">
+			<h3>Demo预览</h3>
+			<ul id="catalog">
+				<li class="current-cat">
+					<a href="javascript:void(0)">
+						全部
+					</a>
+				</li>
+			</ul>
+		</section>
+		<section class="gallery gallery_list gallery_content">
+			<ul class="layout_ul ajaxposts"></ul>
+		</section>
+	</section>
+    <script src="vendor/jquery-1.2.6.min.js"></script>
+	<script src="./pathData.js"></script>
 	<script src="./main.js"></script>
 </body>
 
