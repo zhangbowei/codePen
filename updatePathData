@@ -1,22 +1,24 @@
+#!/usr/bin/env node
 const fs = require('fs');
 const argv = require('yargs').argv;
 const shell = require("shelljs");
 const path = argv.path ? argv.path : __dirname;
+const location = [path, 'pathData.js'].join('/');
 const readData = [
   'find',
   path,
   '-type f',
-  '| grep .html'
+  '| grep .html >',
+  location
 ].join(' ');
 const formatData = 'const pathData = `{{data}}`;';
 
 shell.exec(readData, function (err, stdout, stderr) {
   if (err) throw err;
-
+  const rawData = fs.readFileSync(location, {flag: 'a+', encoding: 'utf8'});
   const pathData = formatData.replace(/\{\{(.*?)}}/, function (all, item) {
-    return stdout;
+    return rawData;
   }).split(path+'/').join('');
-  const location = [path, 'pathData.js'].join('/');
 
   fs.writeFileSync(location, pathData);
 });
