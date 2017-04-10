@@ -9,5 +9,6 @@ example/hidden.html
 example/loading.html
 example/simple.html
 example/swapDomNode.html
+example/urlReqTest.html
 index.html
 `;
