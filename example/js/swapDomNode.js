@@ -3,39 +3,37 @@ var itemA = document.getElementsByTagName('ul')[1].getElementsByTagName('li')[2]
 
 swapDomNode([itemA, itemB]);
 
-function swapDomNode(dataArr, fn) {
+function swapDomNode(nodeArr, swapRuleFn) {
     function getRelatedNode(node) {
-        const parent = node.parentNode;
+        const res = { parent: node.parentNode };
+        const childrenArr = node.parentNode.children;
 
-        for (let i = 0; i < parent.children.length; i++) {
-            if (parent.children[i] === node) {
-                return {
-                    behind: parent.children[i + 1],
-                    parent: node.parentNode
-                };
+        for (let i = 0; i < childrenArr.length; i++) {
+            if (childrenArr[i] === node) {
+                res.behind = childrenArr[i + 1] ? childrenArr[i + 1] : undefined;
+                break;
             }
         }
 
-        return null;
+        return res;
     }
 
-    function insertNode(node, related) {
-        const behind = related.behind;
-        const parent = related.parent;
+    function insertNode(node, relatedNode) {
+        const behind = relatedNode.behind;
+        const parent = relatedNode.parent;
 
         behind ? parent.insertBefore(node, behind) : parent.appendChild(node);
     }
 
-    const nodeArr = dataArr.slice();
-    const swapRule = fn ? fn : function(index, len) {
-        return index === len - 1 ? 0 : index + 1;
-    }
-    const relatedArr = nodeArr.reduce(function (prev, node) {
-        prev.push(getRelatedNode(node));
-        return prev;
+    const rawArr = nodeArr.slice();
+    const relatedArr = rawArr.reduce(function(prev, item) {
+        return prev.concat([getRelatedNode(item)]);
     }, []);
+    const fn = swapRuleFn ? swapRuleFn : function(index, len) {
+        return index === len - 1 ? 0 : index + 1;
+    };
 
-    nodeArr.forEach(function (node, index) {
-        insertNode(node, relatedArr[swapRule(index, nodeArr.length)]);
+    rawArr.forEach(function(item, index) {
+        insertNode(item, relatedArr[fn(index, rawArr.length)]);
     });
 }
