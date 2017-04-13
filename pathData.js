@@ -4,6 +4,7 @@ example/borderTriangle.html
 example/center.html
 example/debounce-throttle.html
 example/flexibleMenu.html
+example/float.html
 example/forceCache.html
 example/hidden.html
 example/loading.html
