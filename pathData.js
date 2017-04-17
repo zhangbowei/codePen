@@ -6,9 +6,10 @@ example/debounce-throttle.html
 example/flexibleMenu.html
 example/float.html
 example/forceCache.html
+example/formData.html
+example/formSelect.html
 example/hidden.html
 example/loading.html
-example/simple.html
 example/swapDomNode.html
 example/urlReqTest.html
 index.html

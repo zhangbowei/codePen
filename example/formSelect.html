@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- HTML结构 -->
+    <form id="test-form" action="test">
+        <legend>请选择想要学习的编程语言：</legend>
+        <fieldset>
+            <p><label class="selectAll"><input type="checkbox"> <span class="selectAll">全选</span><span class="deselectAll">全不选</span></label>
+                <a href="#0" class="invertSelect">反选</a></p>
+            <p><label><input type="checkbox" name="lang" value="javascript"> JavaScript</label></p>
+            <p><label><input type="checkbox" name="lang" value="python"> Python</label></p>
+            <p><label><input type="checkbox" name="lang" value="ruby"> Ruby</label></p>
+            <p><label><input type="checkbox" name="lang" value="haskell"> Haskell</label></p>
+            <p><label><input type="checkbox" name="lang" value="scheme"> Scheme</label></p>
+            <p><button type="submit">Submit</button></p>
+        </fieldset>
+    </form>
+    <script src="../vendor/jquery.min.js"></script>
+    <script>
+        'use strict';
+
+        var
+            form = $('#test-form'),
+            langs = form.find('[name=lang]'),
+            selectAll = form.find('label.selectAll :checkbox'),
+            selectAllLabel = form.find('label.selectAll span.selectAll'),
+            deselectAllLabel = form.find('label.selectAll span.deselectAll'),
+            invertSelect = form.find('a.invertSelect');
+
+        // 重置初始化状态:
+        form.find('*').show().off();
+        form.find(':checkbox').prop('checked', false).off();
+        deselectAllLabel.hide();
+        // 拦截form提交事件:
+        form.off().submit(function (e) {
+            e.preventDefault();
+            console.log(form.serialize());
+        });
+
+        //TODO
+        selectAll.click(function () {
+            if (selectAll.is(':checked')) {
+                langs.prop('checked', true);
+                selectAllLabel.hide();
+                deselectAllLabel.show();
+            } else {
+                langs.prop('checked', false);
+                selectAllLabel.show();
+                deselectAllLabel.hide();
+            }
+        });
+
+        invertSelect.click(function () {
+            langs.map(function () {
+                const dom = $(this);
+
+                dom.is(':checked') ? dom.prop('checked', false) : dom.prop('checked', true);
+            });
+        })
+
+        /*langs.click(function () {
+            var langsChecked = form.find('[name=lang]:checked');
+            if (langsChecked.length === langs.length) {
+                selectAll.prop('checked', true);
+                selectAllLabel.hide();
+                deselectAllLabel.show();
+            } else {
+                selectAll.prop('checked', false);
+                selectAllLabel.show();
+                deselectAllLabel.hide();
+            }
+        });*/
+        //等价于下面
+        form[0].addEventListener('click', function () {
+            const resArr = langs.filter(function () {
+                const dom = $(this);
+
+                return dom.is(':checked') ? false : true;
+            });
+            if (resArr.length === 0) {
+                selectAll.prop('checked', true);
+                selectAllLabel.hide();
+                deselectAllLabel.show();
+            } else {
+                selectAll.prop('checked', false);
+                selectAllLabel.show();
+                deselectAllLabel.hide();
+            }
+        }, false);
+    </script>
+</body>
+
+</html>
