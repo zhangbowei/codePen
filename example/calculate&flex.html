@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../vendor/eric-meyer-reset.min.css">
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            #container {
+                overflow: hidden;
+                padding: 5px 5px;
+            }
+            #calc {
+                width: 300px;
+                border-radius: 5px;
+                margin: 0px auto;
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+                transition: all .4s;
+                overflow: hidden;
+            }
+            #top {
+            }
+            #win-tool {
+                min-height: 35px;
+                padding: 7px 8px 0px 8px;
+                background-color: #ccc;
+            }
+            #win-tool span {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+            }
+            #max {
+                background-color: #FC5652;
+            }
+            #min {
+                background-color: #FDBC40;
+            }
+            #middle {
+                min-height: 90px;
+                background-color: hsl(0, 0%, 50%);
+                color: #FFF;
+                text-align: right;
+            }
+            #middle div {
+                padding: 0px 5px;
+            }
+            #express {
+                font-size: 20px;
+            }
+            #result {
+                font-size: 45px;
+                font-weight: 600;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="container">
+            <div id="calc">
+                <div id="top">
+                    <div id="win-tool">
+                        <span id="max" title="最大化" data-ico="口">&nbsp;</span>
+                        <span id="min" title="最小化" data-ico="◎">&nbsp;</span>
+                    </div>
+                </div>
+                <div id="middle">
+                    <div id="express"></div>
+                    <div id="result">0</div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

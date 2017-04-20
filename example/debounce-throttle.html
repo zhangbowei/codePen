@@ -79,12 +79,10 @@
 
                 if (timer) {
                     clearTimeout(timer);
-                    timer = null;
                 }
 
                 timer = setTimeout(() => {
                     fn.apply(this, args);
-                    timer = null;
                 }, delay);
             }
         }
