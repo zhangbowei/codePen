@@ -195,7 +195,7 @@ a:hover {
     padding-right: 6px;
     position: relative;
     display: inline-block;
-    max-width: 50%;
+    max-width: 80%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
