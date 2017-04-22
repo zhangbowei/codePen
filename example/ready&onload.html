@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../vendor/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        document.addEventListener( "DOMContentLoaded", function() {console.log('ready 捕获')}, true);
+        document.addEventListener( "DOMContentLoaded", function() {console.log('ready 冒泡A')});
+        $(function () { console.log("jquery ready"); });
+        document.addEventListener( "DOMContentLoaded", function() {console.log('ready 冒泡B')});
+
+        window.addEventListener('load', function () { console.log('load 捕获'); }, true);
+        window.addEventListener('load', function () { console.log('load 冒泡A'); });
+        window.onload = function () { console.log('onload'); };
+        window.addEventListener('load', function () { console.log('load 冒泡B'); });
+
+    </script>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!--<img src="https://ww2.sinaimg.cn/large/006tNbRwly1fds9vf10vmj30yk02ot8w.jpg">https://ww2.sinaimg.cn/large/006tNbRwly1fds9vf10vmj30yk02ot8w.jpg</img>
+        <img src="https://ww2.sinaimg.cn/large/006tNbRwly1fdscfgh0aqj30y402edg2.jpg" style="visibility: hidden;">https://uw2.sinaimg.cn/large/006tNbRwly1fdscfgh0aqj30y402edg2.jpg</img>
+        <p>结果：</p>-->
+        <!--<img src="https://ww3.sinaimg.cn/large/006tNbRwly1fehlv70swoj31kw054taz.jpg" style="width: 100%"></img>-->
+        <div style="height: 100px"></div>
+
+</body>
+
+</html>

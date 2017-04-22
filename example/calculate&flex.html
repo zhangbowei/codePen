@@ -2,132 +2,191 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="../vendor/eric-meyer-reset.min.css">
-        <style>
-            * {
-                box-sizing: border-box;
-            }
-            #container {
-                overflow: hidden;
-                padding: 5px 5px;
-            }
-            #calc {
-                width: 300px;
-                border-radius: 5px;
-                margin: 0px auto;
-                box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
-                transition: all .4s;
-                overflow: hidden;
-            }
-            #top {
-            }
-            #win-tool {
-                min-height: 35px;
-                padding: 7px 8px 0px 8px;
-                background-color: #ccc;
-            }
-            #win-tool span {
-                display: inline-block;
-                width: 15px;
-                height: 15px;
-                border-radius: 50%;
-                box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
-            }
-            #max {
-                background-color: #FC5652;
-            }
-            #min {
-                background-color: #FDBC40;
-            }
-            #middle {
-                min-height: 90px;
-                background-color: hsl(0, 0%, 50%);
-                color: #FFF;
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
+<!--absolute/fixed/float会使元素脱离文档流(relative不会)，即使display失效，元素width/height/padding/border/margin可设置，位置视情况而定。-->
 
-                line-height: 1.4;
-                text-align: right;
-            }
-            #middle div {
-                padding: 0px 5px;
-            }
-            #express {
-                font-size: 20px;
-            }
-            #result {
-                font-size: 45px;
-                font-weight: 600;
-            }
-            #bottom {
-                font-weight: 600;
-            }
-            .row {
-                display: flex;
-                margin-bottom: -1px;
-            }
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../vendor/eric-meyer-reset.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-        </style>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+        #container {
+            padding: 5px 5px;
+        }
+
+        #calc {
+            width: 300px;
+            margin: 0px auto;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+            border-radius: 5px;
+            cursor: default;
+            overflow: hidden;
+        }
+
+        .tool {
+            min-height: 35px;
+            padding: 7px 8px 0px 8px;
+            background-color: #ccc;
+        }
+
+        .tool span {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+        }
+
+        #max {
+            background-color: #FC5652;
+        }
+
+        #min {
+            background-color: #FDBC40;
+        }
+
+        #middle {
+            min-height: 90px;
+            background-color: hsl(0, 0%, 50%);
+            color: #FFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            line-height: 1.4;
+            text-align: right;
+        }
+
+        #middle div {
+            padding: 0px 5px;
+        }
+
+        #express {
+            font-size: 20px;
+        }
+
+        #result {
+            font-size: 45px;
+            font-weight: 600;
+        }
+
+        #bottom {
+            font-weight: 600;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: -1px;
+        }
+
+        .row span:last-child {
+            border-right: 0px;
+            background-color: RGBA(245, 146, 62, 0.40);
+            font-size: 25px;
+        }
+
+        .row span {
+            flex: 1;
+            border: 1px solid #fff;
+            border-left: 0px;
+            background-color: RGBA(242, 242, 242, 0.40);
+            font-size: 20px;
+            line-height: 50px;
+            color: hsl(0, 17%, 20%);
+            text-align: center;
+        }
+
+
+        .row span:last-child:hover:active {
+            background-color: #FC5652;
+        }
+
+        .row span:hover:active {
+            background-color: #FC5652;
+        }
+
+        .row span:last-child:hover {
+            border-right: 0px;
+            background-color: RGBA(245, 146, 62, 1.00);
+            font-size: 25px;
+        }
+        .row span:hover {
+            background-color: RGBA(242, 242, 242, 1.00);
+        }
+
+
+        .row .zero {
+            flex: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div id="container">
-            <div id="calc">
-                <div id="top">
-                    <div id="win-tool">
-                        <span id="max" title="最大化" data-ico="口">&nbsp;</span>
-                        <span id="min" title="最小化" data-ico="◎">&nbsp;</span>
-                    </div>
+    <div id="container">
+        <div id="calc">
+            <div id="top">
+                <div class="tool">
+                    <span id="max" title="最大化" data-ico="口">&nbsp;</span>
+                    <span id="min" title="最小化" data-ico="◎">&nbsp;</span>
                 </div>
-                <div id="middle">
-                    <div id="express"></div>
-                    <div id="result">0</div>
+            </div>
+            <div id="middle">
+                <div id="express"></div>
+                <div id="result">0</div>
+            </div>
+            <div id="bottom">
+                <div class="row">
+                    <span id="reset" data-number="C">CE</span>
+                    <span id="remove" data-number="←">←</span>
+                    <span data-number="%">%</span>
+                    <span data-number="/">÷</span>
                 </div>
-                <div id="bottom">
-                    <div class="row">
-                        <span id="reset" data-number="C">CE</span>
-                        <span id="remove" data-number="←">←</span>
-                        <span data-number="%">%</span>
-                        <span data-number="/">÷</span>
-                    </div>
-                    <div class="row">
-                        <span id="reset" data-number="C">CE</span>
-                        <span id="remove" data-number="←">←</span>
-                        <span data-number="%">%</span>
-                        <span data-number="/">÷</span>
-                    </div>
-                    <div class="row">
-                        <span id="reset" data-number="C">CE</span>
-                        <span id="remove" data-number="←">←</span>
-                        <span data-number="%">%</span>
-                        <span data-number="/">÷</span>
-                    </div>
-                    <div class="row">
-                        <span id="reset" data-number="C">CE</span>
-                        <span id="remove" data-number="←">←</span>
-                        <span data-number="%">%</span>
-                        <span data-number="/">÷</span>
-                    </div>
-                    <div class="row">
-                        <span id="reset" data-number="C">CE</span>
-                        <span id="remove" data-number="←">←</span>
-                        <span data-number="%">%</span>
-                        <span data-number="/">÷</span>
-                    </div>
+                <div class="row">
+                    <span data-number="7">7</span>
+                    <span data-number="8">8</span>
+                    <span data-number="9">9</span>
+                    <span data-number="*">×</span>
+                </div>
+                <div class="row">
+                    <span data-number="4">4</span>
+                    <span data-number="5">5</span>
+                    <span data-number="6">6</span>
+                    <span data-number="-">ㅡ</span>
+                </div>
+                <div class="row">
+                    <span data-number="1">1</span>
+                    <span data-number="2">2</span>
+                    <span data-number="3">3</span>
+                    <span data-number="+">＋</span>
+                </div>
+                <div class="row">
+                    <span data-number="0" class="zero">0</span>
+                    <span data-number=".">.</span>
+                    <span data-number="=">＝</span>
                 </div>
             </div>
         </div>
+    </div>
+    <script src="../vendor/jquery.min.js"></script>
+    <script>
 
-    </body>
+    </script>
+    <script>
+    </script>
+
+</body>
+
 </html>
