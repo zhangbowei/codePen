@@ -2,58 +2,69 @@
 <html lang="en">
 
 <head>
-<style>
-* {
-  box-sizing: border-box;
-}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.show {
-  width: 100px;
-  height: 30px;
-  background:#ccc;
-  cursor: pointer;
-  display: block;
-  text-align: center;
-}
-.platte {
-  background-color: rgba(0,0,0,.1);
-  display: none;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.dialog {
-  background: #FFFFFF;
-  position: absolute;
-  width: 400px;
-  height: 200px;
-  top: 50%;
-  right: 50%;
-  transform: translate(200px, -100px);
-}
-.ok {
-  background:#ccc;
-}
-.cancel{
-background: blue;
-}
-.btn{
-  padding: 5px 10px 3px;
-  float: right;
-  cursor: pointer;
-}
+    .show {
+      width: 100px;
+      height: 30px;
+      background: #ccc;
+      cursor: pointer;
+      display: block;
+      text-align: center;
+    }
 
+    .platte {
+      background-color: rgba(0, 0, 0, .1);
+      display: none;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
 
-.button-group{
-  position:absolute;
-  left:0;
-  bottom:0;
-  width: 100%;
-}
+    .dialog {
+      background: #FFFFFF;
+      position: absolute;
+      width: 400px;
+      height: 200px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      /* transform: translate(200px, -100px); */
+      margin: auto;
+    }
 
-</style>
+    .ok {
+      background: #ccc;
+    }
+
+    .cancel {
+      background: blue;
+    }
+
+    .btn {
+      padding: 5px 10px 3px;
+      float: right;
+      cursor: pointer;
+    }
+
+    .button-group {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 
 </head>
 
@@ -61,26 +72,31 @@ background: blue;
   <a id="show" class="show">显示</a>
   <div id="platte" class="platte">
     <div id="dialog" class="dialog">
-      <div class="title"><h1>标题</h1></div>
-      <div class="content"><p>内容</p></div>
+      <div class="title">
+        <h1>标题</h1>
+      </div>
+      <div class="content">
+        <p>内容</p>
+      </div>
       <div class="button-group">
-        <a  id="cancel" class="btn cancel">取消</a>
+        <a id="cancel" class="btn cancel">取消</a>
         <a id="close" class="btn ok">确定</a>
       </div>
     </div>
   </div>
 
-<script>
-const $ = function(str) {
-  return document.getElementById(str);
-}
+  <script>
+    const $ = function (str) {
+      return document.getElementById(str);
+    }
 
-$("show").addEventListener("click", function() {
-  $("platte").style.display = "block";
-})
-$("close").addEventListener("click", function() {
-  $("platte").style.display = "none";
-})
-</script>
+    $("show").addEventListener("click", function (e) {
+      $("platte").style.display = "block";
+    })
+    $("close").addEventListener("click", function () {
+      $("platte").style.display = "none";
+    })
+  </script>
 </body>
+
 </html>

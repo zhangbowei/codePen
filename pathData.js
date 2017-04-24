@@ -12,8 +12,11 @@ example/formData.html
 example/formSelect.html
 example/hidden.html
 example/loading.html
-example/simple.html
+example/onClick&click.html
+example/over&enter.html
+example/ready&onload.html
 example/swapDomNode.html
+example/table.html
 example/urlReqTest.html
 index.html
 `;

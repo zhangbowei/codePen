@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        x = 0;
+        y = 0;
+        window.onload = function () {
+            document.querySelector("div.over").addEventListener('click', function () {
+                console.log('父 click冒泡');
+                document.querySelector(".over span").textContent = (x += 1);
+            });
+            document.querySelector("div.over").addEventListener('click', function () {
+                console.log('父 click捕获');
+                document.querySelector(".over span").textContent = (x += 1);
+            }, true);
+            // document.querySelector(".test").addEventListener('click', function () {
+            //     console.log('h2 click');
+            // });
+            document.querySelector(".test").onclick = function () {
+                console.log('h2 click');
+                document.querySelector(".over span").textContent = (x += 1);
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div class="over" style="background-color:lightgray;padding:20px;width:40%;float:left">
+        <h2 class="test" style="background-color:white;">被触发的 click 事件：<span></span></h2>
+    </div>
+</body>
+
+</html>
