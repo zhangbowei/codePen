@@ -23,8 +23,8 @@ function initExampleHTML(originData) {
 
     return rawData.reduce(function(prev, item) {
         const data = item.match(/\/([^\/]+)\.html$/);
-        return data ? prev + formatString({path: item, name: data[1]}) : prev;
-    }, '');
+        return data ? prev.concat([formatString({path: item, name: data[1]})]) : prev;
+    }, []);
 };
 
 function formatPathData(data) {
@@ -34,5 +34,9 @@ function formatPathData(data) {
 $(function () {
     const el = document.querySelector(".layout_ul.ajaxposts");
 
-    el.innerHTML = el.innerHTML + initExampleHTML(formatPathData(pathData));
+    const exampleArr = initExampleHTML(formatPathData(pathData));
+
+    exampleArr.forEach(function(item) {
+        el.innerHTML += item;
+    });
 });
