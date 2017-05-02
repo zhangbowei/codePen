@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        span {
+            cursor: pointer;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 300px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+        }
+
+        .top {
+            min-height: 40px;
+            background-color: RGBA(204, 204, 204, 1.00);
+            display: flex;
+            flex-direction: row;
+            justify-content: right;
+            align-items: center;
+        }
+
+        .top span {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-left: 10px;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+        }
+
+        #max {
+            background-color: red;
+        }
+
+        #min {
+            background-color: yellow;
+        }
+
+        .middle {
+            min-height: 100px;
+            color: white;
+            background-color: grey;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        #display {
+            font-size: 25px;
+            font-weight: 400;
+        }
+
+        #result {
+            font-size: 45px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            background-color: RGBA(242, 242, 242, 0.40);
+        }
+
+        .row span {
+            flex: 1;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            border-top: 2px solid #FFF;
+            border-right: 2px solid #FFF;
+        }
+
+        .row span:hover {
+            background-color: RGBA(242, 242, 242, 1.00);
+        }
+
+        .row span:last-child {
+            border-right: 0px;
+            background-color: RGBA(245, 146, 62, 0.40);
+        }
+
+        .row span:last-child:hover {
+            background-color: RGBA(245, 146, 62, 1.00);
+        }
+
+        .row span:hover:active {
+            background-color: #FC5652;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+        <div id="cal">
+            <div class="top">
+                <span id="max"></span>
+                <span id="min"></span>
+            </div>
+            <div class="middle">
+                <div id="display"></div>
+                <div id="result">0</div>
+            </div>
+            <div class="bottom">
+                <div class="row">
+                    <span class="btn">1</span>
+                    <span class="btn">2</span>
+                    <span class="btn">3</span>
+                    <span class="btn">4</span>
+                </div>
+                <div class="row">
+                    <span class="btn">1</span>
+                    <span class="btn">2</span>
+                    <span class="btn">3</span>
+                    <span class="btn">4</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

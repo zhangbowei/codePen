@@ -27,7 +27,8 @@
             // document.querySelector(".test").addEventListener('click', function () {
             //     console.log('h2 click');
             // });
-            document.querySelector(".test").onclick = function () {
+            document.querySelector(".test").onclick = function (e) {
+                console.log(e);
                 console.log('h2 click');
                 document.querySelector(".over span").textContent = (x += 1);
             };

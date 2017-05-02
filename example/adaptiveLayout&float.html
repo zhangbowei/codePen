@@ -80,8 +80,15 @@
             text-align: center;
             line-height: 20px;
         }
-        .main {
+        /*.main {
             overflow: hidden;
+        }*/
+        .main::after {
+            clear: both;
+            display: block;
+            content: '';
+            height: 0px;
+            width: 0px;
         }
         .left {
             float: left;

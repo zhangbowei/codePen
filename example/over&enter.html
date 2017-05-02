@@ -16,24 +16,28 @@
         x = 0;
         y = 0;
         window.onload = function () {
-            document.querySelector("div.over").addEventListener('mouseover', function () {
+            document.querySelector("div.over").addEventListener('mouseover', function (e) {
                 console.log('父 moverover冒泡');
+                console.log('this === e.currentTarget:', this === e.currentTarget);
                 document.querySelector(".over span").textContent = (x += 1);
             });
-            document.querySelector("div.over").addEventListener('mouseover', function () {
+            document.querySelector("div.over").addEventListener('mouseover', function (e) {
                 console.log('父 moverover捕获');
+                console.log('this === e.currentTarget:', this === e.currentTarget);
                 document.querySelector(".over span").textContent = (x += 1);
             }, true);
             document.querySelector(".test").addEventListener('mouseover', function () {
                 console.log('h2 moverover冒泡');
             });
 
-            document.querySelector("div.enter").onmouseenter = function () {
+            document.querySelector("div.enter").onmouseenter = function (e) {
                 console.log('父 mouseenter冒泡');
+                console.log('this === e.currentTarget:', this === e.currentTarget);
                 document.querySelector(".enter span").textContent = (y += 1);
             };
-            document.querySelector("div.enter").addEventListener('mouseenter', function () {
+            document.querySelector("div.enter").addEventListener('mouseenter', function (e) {
                 console.log('父 mouseenter捕获');
+                console.log('this === e.currentTarget:', this === e.currentTarget);
                 document.querySelector(".enter span").textContent = (y += 1);
             }, true);
             document.querySelector(".testtest").onmouseenter = function () {

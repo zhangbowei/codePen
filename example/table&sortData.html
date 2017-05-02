@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 600px;
+            height: 300px;
+        }
+        th, td {
+            border: 1px solid RGBA(47, 47, 47, 1.00);
+        }
+        th {
+            cursor: pointer;
+            background-color: RGBA(217, 217, 217, 1.00);
+        }
+        th:hover {
+            background-color: RGBA(0, 0, 0, 0.40);
+        }
+        th:hover:active {
+            background-color: RGBA(0, 0, 0, 0.80);
+        }
+        td {
+            background-color: RGBA(255, 255, 255, 1.00);
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <table>
+        <tr>
+            <th data-key="0"></th>
+            <th data-key="1"></th>
+            <th data-key="2"></th>
+            <th data-key="3"></th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+        function loadDataOnDom(dataArr) {
+            const rawArr = dataArr.slice();
+            const trArr = [].slice.call(document.querySelectorAll('table tr:nth-child(n+2)'));
+
+            trArr.forEach(function (good, tag) {
+                const tdArr = [].slice.call(good.children);
+                tdArr.forEach(function (element, order) {
+                    element.textContent = rawArr[tag] ? rawArr[tag][order] : null;
+                });
+            });
+        }
+
+        function sortData(dataArr, key) {
+            const name = key;
+            const rawArr = dataArr.slice();
+            const sortArr = dataArr.sort((a, b) => a[name] - b[name]);
+
+            return JSON.stringify(rawArr) === JSON.stringify(sortArr) ? sortArr.reverse() : sortArr;
+        }
+
+        const table = document.querySelector("table tr:first-child");
+        const dataArr = [
+            ['test', '1', '10', '900' ],
+            ['xiaoming', '4', '30', '400' ],
+            ['xiaohong', '3', '40', '300' ]
+        ];
+
+        loadDataOnDom(dataArr);
+
+        table.addEventListener('click', function (event) {
+            const originArr = dataArr.slice();
+            let target = event.target;
+
+            while (target.tagName.toLowerCase() !== 'th' || target === table) {
+                target = target.parentNode;
+            }
+
+            if (target !== table) {
+                loadDataOnDom(sortData(dataArr, target.dataset.key));
+            }
+        });
+    </script>
+</body>
+
+</html>
