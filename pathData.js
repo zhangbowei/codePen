@@ -10,6 +10,7 @@ example/float.html
 example/forceCache.html
 example/formData.html
 example/formSelect.html
+example/grail.html
 example/hidden.html
 example/loading.html
 example/menu&flex.html
@@ -23,5 +24,6 @@ example/table&calendar.html
 example/table&sortData.html
 example/table.html
 example/urlReqTest.html
+example/wing.html
 index.html
 `;
