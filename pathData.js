@@ -19,10 +19,12 @@ example/onClick&click.html
 example/over&enter.html
 example/page&offset&client.html
 example/ready&onload.html
+example/simple.html
 example/swapDomNode.html
 example/table&calendar.html
 example/table&sortData.html
 example/table.html
+example/transition&autoHeight.html
 example/urlReqTest.html
 example/wing.html
 index.html
