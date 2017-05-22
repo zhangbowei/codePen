@@ -1,6 +1,7 @@
 const pathData = `example/adaptiveLayout&flex.html
 example/adaptiveLayout&float.html
 example/adaptiveLayout&inline-block.html
+example/bind-on.html
 example/borderTriangle.html
 example/calculate&flex&simple.html
 example/calculate&flex.html

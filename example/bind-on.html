@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100px;
+            position: relative;
+        }
+
+        .container input {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+        <input bind="text" on="text">
+    </div>
+    <script>
+        function bindViewToModal(domArr) {
+            function makeConf(el, key) {
+                const realKey = ['_', key].join('');
+                return {
+                    set: function(value) {
+                        el.value = value;
+                        this[realKey] = value;
+                    },
+                    get: function() {
+                        return this[realKey];
+                    }
+                };
+            }
+
+            domArr = Array.from(domArr);
+
+            return domArr.reduce(function (prev, item) {
+                const key = item.getAttribute('bind');
+                Object.defineProperty(prev, key, makeConf(item, key));
+                return prev;
+            }, {});
+        }
+        function dependModalOnView(domArr) {
+            domArr = Array.from(domArr);
+
+            return domArr.reduce(function(prev, item) {
+                const key = item.getAttribute('on');
+                prev[key] = undefined;
+                item.addEventListener('input', function(e) {
+                    prev[key] = item.value;
+                });
+                return prev;
+            }, {});
+        }
+
+        function mapModalAToB(itemA, itemB) {
+            function makeConf(keyArr, mapData) {
+                return keyArr.reduce(function(prev, item) {
+                    prev[item] = {
+                        set: function(value) {
+                            itemB[item] = value;
+                        },
+                        get: function(value) {
+                            return itemB[item];
+                        }
+                    }
+                    return prev;
+                }, {});
+            }
+            Object.defineProperties(itemA, makeConf(Object.keys(itemA), itemB));
+        }
+
+        const inputArr = document.querySelectorAll('[bind]');
+        const modalA = dependModalOnView(inputArr);
+        const modalB = bindViewToModal(inputArr);
+        const modal = modalB;
+        mapModalAToB(modalA, modalB);
+
+    </script>
+</body>
+
+</html>
