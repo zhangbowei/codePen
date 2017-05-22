@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100px;
+            position: relative;
+        }
+
+        .container input {
+            width: 100%;
+        }
+
+        .list {
+            position: absolute;
+            padding-left: 0px;
+            width: 100%;
+            border: 1px solid black;
+            display: none;
+        }
+
+        .list div {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+        <input list="cars" />
+        <datalist id="cars">
+            <option value="BMW">
+                <option value="Ford">
+                    <option value="Volvo">
+        </datalist>
+    </div>
+    <div class="container">
+        <input name="text">
+        <div class="list"></div>
+    </div>
+    <script>
+        function asyncList(dom, dataArr) {
+            function getDisplayHtml(str) {
+                return ['<div>', str, '</div>'].join('');
+            }
+
+            dom.innerHTML = dataArr.reduce(function (prev, item) {
+                return prev + getDisplayHtml(item);
+            }, '');
+        }
+        function isDisplay(dom, display) {
+            display ? dom.style.display = 'block' : dom.style.display = 'none';
+        }
+
+        const goodArr = ['a', 'abc', 'ddff'];
+        const input = document.querySelector('input[name=text]');
+        const list = document.querySelector('.list');
+
+        input.addEventListener('input', function () {
+            const selectedArr = goodArr.filter(function (item) {
+                return item.includes(input.value) ? true : false;
+            });
+            asyncList(list, selectedArr);
+            isDisplay(list, selectedArr.length);
+        });
+    </script>
+</body>
+
+</html>

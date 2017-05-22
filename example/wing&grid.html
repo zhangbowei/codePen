@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /*父不要padding，不要margin；content就是全部width，确保子margin的-100%足够*/
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            height: 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .main {
+            background: yellow;
+            height: 100px;
+            grid-area: 1/2/2/3;
+        }
+
+        .aside {
+            background: red;
+            height: 100px;
+            grid-area: 1/1/2/2;
+        }
+
+        .sideBar {
+            background: green;
+            height: 100px;
+            grid-area: 1/3/2/4;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+        <div class="main"></div>
+        <div class="aside"></div>
+        <div class="sideBar"></div>
+    </div>
+
+</body>
+
+</html>

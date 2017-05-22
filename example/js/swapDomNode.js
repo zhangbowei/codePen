@@ -3,37 +3,29 @@ var itemA = document.getElementsByTagName('ul')[1].getElementsByTagName('li')[2]
 
 swapDomNode([itemA, itemB]);
 
-function swapDomNode(nodeArr, swapRuleFn) {
+function swapDomNode(nodeArr) {
     function getRelatedNode(node) {
-        const res = { parent: node.parentNode };
-        const childrenArr = node.parentNode.children;
-
-        for (let i = 0; i < childrenArr.length; i++) {
-            if (childrenArr[i] === node) {
-                res.behind = childrenArr[i + 1] ? childrenArr[i + 1] : undefined;
-                break;
-            }
+        return {
+            parent: node.parentNode,
+            behind: node.nextSibling
         }
-
-        return res;
     }
-
     function insertNode(node, relatedNode) {
-        const behind = relatedNode.behind;
         const parent = relatedNode.parent;
+        const behind = relatedNode.behind;
 
-        behind ? parent.insertBefore(node, behind) : parent.appendChild(node);
+        parent.insertBefore(node, behind);
     }
 
-    const rawArr = nodeArr.slice();
-    const relatedArr = rawArr.reduce(function(prev, item) {
-        return prev.concat([getRelatedNode(item)]);
-    }, []);
-    const fn = swapRuleFn ? swapRuleFn : function(index, len) {
-        return index === len - 1 ? 0 : index + 1;
-    };
-
-    rawArr.forEach(function(item, index) {
-        insertNode(item, relatedArr[fn(index, rawArr.length)]);
+    nodeArr.reduce(function (prev, node) {
+        return prev.concat([getRelatedNode(node)]);
+    }, []).forEach(function(relatedNode, index) {
+        insertNode(nodeArr[index === nodeArr.length-1 ? 0 : index+1], relatedNode);
     });
 }
+
+
+window.addEventListener('storage', function (event) {
+    console.log(event);
+});
+localStorage.setItem('logged-on', 12333);
