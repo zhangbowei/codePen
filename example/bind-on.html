@@ -33,18 +33,21 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <div class="container">
-        <input bind="text" on="text">
+        <label for='name'>
+            对应控制台中 modal.text变量:
+        </label>
+        <input name="name" bind="text" on="text">
     </div>
     <script>
         function bindViewToModal(domArr) {
             function makeConf(el, key) {
                 const realKey = ['_', key].join('');
                 return {
-                    set: function(value) {
+                    set: function (value) {
                         el.value = value;
                         this[realKey] = value;
                     },
-                    get: function() {
+                    get: function () {
                         return this[realKey];
                     }
                 };
@@ -61,10 +64,10 @@
         function dependModalOnView(domArr) {
             domArr = Array.from(domArr);
 
-            return domArr.reduce(function(prev, item) {
+            return domArr.reduce(function (prev, item) {
                 const key = item.getAttribute('on');
                 prev[key] = undefined;
-                item.addEventListener('input', function(e) {
+                item.addEventListener('input', function (e) {
                     prev[key] = item.value;
                 });
                 return prev;
@@ -73,12 +76,12 @@
 
         function mapModalAToB(itemA, itemB) {
             function makeConf(keyArr, mapData) {
-                return keyArr.reduce(function(prev, item) {
+                return keyArr.reduce(function (prev, item) {
                     prev[item] = {
-                        set: function(value) {
+                        set: function (value) {
                             itemB[item] = value;
                         },
-                        get: function(value) {
+                        get: function (value) {
                             return itemB[item];
                         }
                     }
@@ -93,7 +96,6 @@
         const modalB = bindViewToModal(inputArr);
         const modal = modalB;
         mapModalAToB(modalA, modalB);
-
     </script>
 </body>
 
