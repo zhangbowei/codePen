@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid RGBA(47, 47, 47, 1.00);
+        }
+
+        th {
+            cursor: pointer;
+            background-color: RGBA(217, 217, 217, 1.00);
+        }
+
+        th:hover {
+            background-color: RGBA(0, 0, 0, 0.40);
+        }
+
+        th:hover:active {
+            background-color: RGBA(0, 0, 0, 0.80);
+        }
+
+        td {
+            background-color: RGBA(255, 255, 255, 1.00);
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <table>
+    </table>
+    <script>
+        function fillDataInView(el, data) {
+            function getHtml(dataArr, template) {
+                return dataArr.reduce(function (prev, item) {
+                    return prev.concat(template.replace(/{{}}/, item));
+                }, ['<tr>']).concat(['</tr>']).join('');
+            }
+            function getMaxLen(dataObj) {
+                return Object.keys(dataObj).reduce(function (prev, item) {
+                    return dataObj[item].length > prev ? dataObj[item].length : prev;
+                }, 0);
+            }
+            function getData(dataObj, index) {
+                return Object.keys(dataObj).reduce(function (prev, item) {
+                    return prev.concat([dataObj[item][index] ? dataObj[item][index] : null]);
+                }, []);
+            }
+
+            const rawData = data;
+            const title = getHtml(Object.keys(rawData), '<th>{{}}</th>');
+            const content = new Array(getMaxLen(rawData) + 1).join().split('').reduce(function (stock, good, order) {
+                return stock + getHtml(getData(rawData, order), '<td>{{}}</td>');
+            }, '');
+
+            el.innerHTML = [title, content].join('');
+        }
+
+
+        const dom = document.querySelector('table');
+        const data = { name: ['zhang', 'li'], age: [1, 2, 3, 4] };
+
+        fillDataInView(dom, data);
+    </script>
+</body>
+
+</html>

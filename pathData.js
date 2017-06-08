@@ -23,6 +23,7 @@ example/page&offset&client.html
 example/ready&onload.html
 example/swapDomNode.html
 example/table&calendar.html
+example/table&filldata.html
 example/table&sortData.html
 example/table.html
 example/transition&autoHeight.html
