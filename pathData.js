@@ -12,6 +12,7 @@ example/float.html
 example/forceCache.html
 example/formData.html
 example/formSelect.html
+example/getElement&querySelector.html
 example/grail.html
 example/hidden.html
 example/loading.html

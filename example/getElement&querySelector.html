@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        a {
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            line-height: 60px;
+            background: RGBA(128, 128, 128, 0.10);
+            cursor: pointer;
+        }
+
+        a:hover {
+            background: RGBA(128, 128, 128, 0.40);
+        }
+        a:hover:active {
+            background: RGBA(128, 128, 128, 1.00);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            padding-left: 0px;
+            height: 10px;
+        }
+
+        li:nth-child(n) {
+            background: grey;
+        }
+
+        li:nth-child(2n) {
+            background: black;
+        }
+
+        li:nth-child(1) {
+            background: white;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            /*overflow: hidden;*/
+        }
+
+        .container ul {
+            flex: 1;
+            overflow-x: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <a id="start">Start</a>
+    <div class="container">
+        <ul id="dynamic">
+            document.getElementById('dynamic').querySelectorAll('li')
+            <li></li>
+        </ul>
+        <ul id="static">
+            document.getElementById('static').getElementsByTagName('li')
+            <li></li>
+        </ul>
+        <ul id="get_Children">
+            document.getElementById('get_Children').children
+            <li></li>
+        </ul>
+        <ul id="query_Children">
+            document.querySelector('#query_Children').children
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        function appendNewNode(domArr, num) {
+            //forEach循环初始化就绑定了  循环次数，所以domArr改变反映不出来
+            // Array.from(domArr).forEach(function (dom, index) {
+            //     index < num ? dom.parentNode.appendChild(document.createElement('li')) : null;
+            // });
+            //类似于
+            /*
+            const arr = Array.from(domArr);
+            for (let i = 0; i < arr.length && i < num; ++i) {
+                domArr[i].parentNode.appendChild(document.createElement('li'));
+            }
+            */
+            for (let i = 0; i < domArr.length && i < num; ++i) {
+                domArr[i].parentNode.appendChild(document.createElement('li'));
+            }
+        }
+
+        document.querySelector('#start').onclick = function (event) {
+            //length更新了
+            appendNewNode(document.getElementById('dynamic').querySelectorAll('li'), 99);
+            //length没有更新
+            appendNewNode(document.getElementById('static').getElementsByTagName('li'), 99);
+            //再次读取children属性，length更新了
+            appendNewNode(document.getElementById('get_Children').children, 99);
+            //再次读取children属性，length更新了
+            appendNewNode(document.querySelector('#query_Children').children, 99);
+        };
+    </script>
+
+</body>
+
+</html>
