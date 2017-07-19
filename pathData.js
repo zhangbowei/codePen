@@ -15,6 +15,7 @@ example/formSelect.html
 example/getElement&querySelector.html
 example/grail.html
 example/hidden.html
+example/lineHeight.html
 example/loading.html
 example/menu&flex.html
 example/menu&float.html
@@ -22,6 +23,7 @@ example/onClick&click.html
 example/over&enter.html
 example/page&offset&client.html
 example/ready&onload.html
+example/simple.html
 example/swapDomNode.html
 example/table&calendar.html
 example/table&filldata.html
