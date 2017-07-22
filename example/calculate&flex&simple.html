@@ -7,140 +7,153 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        span {
-            cursor: pointer;
-        }
+    html {
+      font-size: 62.5%;
+    }
 
-        .container {
-            margin: 0 auto;
-            width: 300px;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
-        }
+    .container {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .top {
-            min-height: 40px;
-            background-color: RGBA(204, 204, 204, 1.00);
-            display: flex;
-            flex-direction: row;
-            justify-content: right;
-            align-items: center;
-        }
+    .cal {
+      width: 300px;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+      border-radius: 5px;
+      overflow: hidden;
+    }
 
-        .top span {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            margin-left: 10px;
-            box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
-        }
+    .top {
+      min-height: 40px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: RGBA(204, 204, 204, 1.00);
+    }
 
-        #max {
-            background-color: red;
-        }
+    .tool {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      margin-left: 10px;
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    }
 
-        #min {
-            background-color: yellow;
-        }
+    .max {
+      background-color: red;
+    }
 
-        .middle {
-            min-height: 100px;
-            color: white;
-            background-color: grey;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: flex-end;
-            text-align: right;
-            padding-right: 10px;
-        }
+    .min {
+      background-color: yellow;
+    }
 
-        #display {
-            font-size: 25px;
-            font-weight: 400;
-        }
+    .middle {
+      min-height: 100px;
+      padding-right: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      color: white;
+      background-color: grey;
+    }
 
-        #result {
-            font-size: 45px;
-            font-weight: 600;
-            line-height: 1.4;
-        }
+    .result {
+      font-size: 4.5rem;
+      line-height: 1;
+      font-weight: 600;
+    }
 
-        .row {
-            display: flex;
-            flex-direction: row;
-            background-color: RGBA(242, 242, 242, 0.40);
-        }
+    .display {
+      font-size: 2.5rem;
+      font-weight: 400;
+    }
 
-        .row span {
-            flex: 1;
-            font-size: 30px;
-            line-height: 50px;
-            text-align: center;
-            border-top: 2px solid #FFF;
-            border-right: 2px solid #FFF;
-        }
+    .row {
+      display: flex;
+      flex-direction: row;
+      background-color: RGBA(242, 242, 242, 0.40);
+      cursor: pointer;
+    }
 
-        .row span:hover {
-            background-color: RGBA(242, 242, 242, 1.00);
-        }
+    .btn {
+      flex: 1;
+      line-height: 50px;
+      font-size: 3rem;
+      border: 2px solid #FFF;
+      border-left: none;
+      border-bottom: none;
+      text-align: center;
+    }
 
-        .row span:last-child {
-            border-right: 0px;
-            background-color: RGBA(245, 146, 62, 0.40);
-        }
+    .btn:hover {
+      background-color: RGBA(242, 242, 242, 1.00);
+    }
 
-        .row span:last-child:hover {
-            background-color: RGBA(245, 146, 62, 1.00);
-        }
+    .btn:hover:active {
+      background-color: #FC5652;
+    }
 
-        .row span:hover:active {
-            background-color: #FC5652;
-        }
-    </style>
+    .br0 {
+      border-right: 0px;
+      background-color: RGBA(245, 146, 62, 0.40);
+    }
+
+    .br0:hover {
+      background-color: RGBA(245, 146, 62, 1.00);
+    }
+  </style>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
+  <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <div class="container">
-        <div id="cal">
-            <div class="top">
-                <span id="max"></span>
-                <span id="min"></span>
-            </div>
-            <div class="middle">
-                <div id="display"></div>
-                <div id="result">0</div>
-            </div>
-            <div class="bottom">
-                <div class="row">
-                    <span class="btn">1</span>
-                    <span class="btn">2</span>
-                    <span class="btn">3</span>
-                    <span class="btn">4</span>
-                </div>
-                <div class="row">
-                    <span class="btn">1</span>
-                    <span class="btn">2</span>
-                    <span class="btn">3</span>
-                    <span class="btn">4</span>
-                </div>
-            </div>
+  <div class="container">
+    <div class="cal">
+      <div class="top">
+        <span id="max" class="max tool"></span>
+        <span id="min" class="min tool"></span>
+      </div>
+      <div class="middle">
+        <div class="display"></div>
+        <div class="result">0</div>
+      </div>
+      <div class="bottom">
+        <div class="row">
+          <span class="btn">1</span>
+          <span class="btn">2</span>
+          <span class="btn">3</span>
+          <span class="btn br0">4</span>
         </div>
+        <div class="row">
+          <span class="btn">1</span>
+          <span class="btn">2</span>
+          <span class="btn">3</span>
+          <span class="btn br0">4</span>
+        </div>
+      </div>
     </div>
+  </div>
 
 </body>
 

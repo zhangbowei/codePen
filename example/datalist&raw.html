@@ -7,81 +7,106 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        .container {
-            width: 100px;
-            position: relative;
-        }
+    .container {
+      position: relative;
+      width: 100px;
+    }
 
-        .container input {
-            width: 100%;
-        }
+    .container input {
+      width: 100%;
+    }
 
-        .list {
-            position: absolute;
-            padding-left: 0px;
-            width: 100%;
-            border: 1px solid black;
-            display: none;
-        }
+    .list {
+      position: absolute;
+      width: 100%;
+      display: none;
+      border: 1px solid #9DC2E6;
+    }
 
-        .list div {
-            width: 100%;
-        }
-    </style>
+    .list div:hover {
+      background-color: #C1F5B0;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <div class="container">
-        <input list="cars" />
-        <datalist id="cars">
-            <option value="BMW">
-                <option value="Ford">
-                    <option value="Volvo">
-        </datalist>
-    </div>
-    <div class="container">
-        <input name="text" bind="text">
-        <div class="list"></div>
-    </div>
-    <script>
-        function asyncList(dom, dataArr) {
-            function getDisplayHtml(str) {
-                return ['<div>', str, '</div>'].join('');
-            }
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+  <div class="container">
+    <input list="cars" />
+    <datalist id="cars">
+      <option value="BMW">test</option>
+      <option value="Ford"></option>
+      <option value="Volvo"></option>
+    </datalist>
+  </div>
+  <div class="container">
+    <input name="text" bind="text">
+    <div class="list"></div>
+  </div>
+  <script>
+    function asyncList(dom, goodArr, filter) {
+      function getDisplayHtml(str) {
+        return ['<div>', str, '</div>'].join('');
+      }
 
-            dom.innerHTML = dataArr.reduce(function (prev, item) {
-                return prev + getDisplayHtml(item);
-            }, '');
-        }
-        function isDisplay(dom, display) {
-            display ? dom.style.display = 'block' : dom.style.display = 'none';
-        }
+      const selectedArr = goodArr.filter(function (item) {
+        return item.includes(filter) ? true : false;
+      });
 
-        const goodArr = ['a', 'abc', 'ddff'];
-        const input = document.querySelector('input[name=text]');
-        const list = document.querySelector('.list');
+      dom.innerHTML = selectedArr.reduce(function (prev, item) {
+        return prev.concat([getDisplayHtml(item)]);
+      }, []).join('');
+    }
 
-        input.addEventListener('input', function () {
-            const selectedArr = goodArr.filter(function (item) {
-                return item.includes(input.value) ? true : false;
-            });
-            asyncList(list, selectedArr);
-            isDisplay(list, selectedArr.length);
-        });
-    </script>
+    function setDisplay(dom, display) {
+      display ? dom.style.display = 'block' : dom.style.display = 'none';
+    }
+
+
+    const goodArr = ['a', 'abc', 'ddff'];
+    const input = document.querySelector('input[name=text]');
+    const list = document.querySelector('.list');
+    const container = document.querySelectorAll('.container')[1];
+
+    input.addEventListener('input', function () {
+      asyncList(list, goodArr, input.value);
+    });
+    input.addEventListener('focus', function () {
+      asyncList(list, goodArr, input.value);
+      setDisplay(list, true);
+    });
+    list.addEventListener('click', function (e) {
+      const node = e.target;
+      if (node !== e.currentTarget) {
+        input.value = node.textContent;
+      }
+    });
+    container.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+    window.addEventListener('click', function () {
+      setDisplay(list, false);
+    })
+    window.addEventListener('keydown', function (e) {
+      if (e.target === input && e.key === 'Tab') {
+        setDisplay(list, false);
+      }
+    })
+  </script>
+
 </body>
 
 </html>

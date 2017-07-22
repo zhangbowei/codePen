@@ -7,112 +7,111 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0px;
+      padding: 0px;
+    }
 
-        .container {
-            margin: 5px;
-            padding: 5px;
-            border: 1px solid #9D9D9D;
-        }
+    .container {
+      border: 1px solid #9D9D9D;
+      padding: 5px;
+    }
 
-        .header {
-            border: 1px solid #5C7858;
-            margin-bottom: 5px;
-        }
+    .header {
+      border: 1px solid #5C7858;
+      margin-bottom: 5px;
+    }
 
-        .header:after {
-            clear: both;
-            display: block;
-            content: '';
-            height: 0px;
-            width: 0px;
-        }
+    .header::after {
+      clear: both;
+      content: '';
+      visibility: hidden;
+      display: block;
+      width: 0px;
+      height: 0px;
+      text-align: center;
+    }
 
-        .logo {
-            margin: 10px;
-            border: 1px solid #D8B284;
-            width: 48px;
-            /*height: 48px;*/
-            float: left;
-            text-align: center;
-            line-height: 48px;
-            /*font-size: 1px;*/
-        }
+    .logo {
+      margin: 10px;
+      border: 1px solid #D8B284;
+      line-height: 50px;
+      width: 50px;
+    }
 
-        .user {
-            width: 140px;
-            line-height: 20px;
-            border: 1px solid #373737;
-            float: right;
-            margin-top: 40px;
-            margin-right: 10px;
-            text-align: center;
-        }
+    .user {
+      border: 1px solid #373737;
+      width: 140px;
+      line-height: 20px;
+      position: relative;
+      margin-top: 40px;
+      margin-right: 10px;
+    }
 
-        .box {
-            width: 100%;
-        }
+    .L {
+      float: left;
+    }
 
-        .content {
-            border: 1px solid #4C4B8F;
-            height: 350px;
-            margin-right: 200px;
-        }
+    .R {
+      float: right;
+    }
 
-        .side {
-            margin-left: -200px;
-            border: 1px solid #A45C67;
-            height: 25px;
-            width: 200px;
-        }
-
-        .footer {
-            margin-top: 5px;
-            border: 1px solid #5D5D5D;
-            text-align: center;
-            line-height: 20px;
-        }
-        /*.main {
-            overflow: hidden;
-        }*/
-        .main::after {
-            clear: both;
-            display: block;
-            content: '';
-            height: 0px;
-            width: 0px;
-        }
-        .left {
-            float: left;
-        }
-    </style>
+    .main::after {
+      clear: both;
+      content: '';
+      visibility: hidden;
+      display: block;
+      width: 0px;
+      height: 0px;
+      text-align: center;
+    }
+    .box {
+      width: 100%;
+    }
+    .content {
+      margin-right: 200px;
+      border: 1px solid #4C4B8F;
+      height: 350px;
+    }
+    .side {
+      margin-left: -200px;
+      border: 1px solid #A45C67;
+      height: 25px;
+      width: 200px;
+    }
+    .footer {
+      line-height: 20px;
+      margin-top: 5px;
+      border: 1px solid #5D5D5D;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
+  <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <div class="container">
-        <div class="header">
-            <div class="logo">logo</div>
-            <div class="user">用户名</div>
-        </div>
-        <div class="main">
-            <div class="left box">
-                <div class="content">content</div>
-            </div>
-            <div class="left side">side</div>
-        </div>
-        <div class="footer">center</div>
+  <div class="container">
+    <div class="header">
+      <div class="logo L">logo</div>
+      <div class="user R">用户名</div>
     </div>
+    <div class="main">
+      <div class="L box">
+        <div class="content">content</div>
+      </div>
+      <div class="L side">side</div>
+    </div>
+    <div class="footer">center</div>
+  </div>
 </body>
 
 </html>

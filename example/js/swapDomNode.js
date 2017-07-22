@@ -23,9 +23,3 @@ function swapDomNode(nodeArr) {
         insertNode(nodeArr[index === nodeArr.length-1 ? 0 : index+1], relatedNode);
     });
 }
-
-
-window.addEventListener('storage', function (event) {
-    console.log(event);
-});
-localStorage.setItem('logged-on', 12333);
