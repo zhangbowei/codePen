@@ -35,6 +35,7 @@
       top: 200px;
       left: 200px;
       overflow-x: scroll;
+      padding: 15px;
     }
 
     p {
@@ -57,23 +58,20 @@
   <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-  <a id="change">改变box height</a>
+  <a id="change">获取最新信息</a>
   <div class="container">
     <div id="box"></div>
   </div>
   <script>
-    const template = ['offsetHeight', 'clientHeight', 'scrollHeight'];
+    const template = ['scrollTop', 'offsetTop', 'clientTop'];
     const el = document.querySelector('#box');
     const getInfor = function () {
-      console.log('style.height:%s', el.style.height);
       template.forEach(function (item) {
         console.log('%s:%s', item, el.parentElement[item]);
       });
     };
-    el.style.height = '2000px';
     getInfor();
     document.querySelector('#change').addEventListener('click', function () {
-      el.style.height = '200px';
       getInfor();
     })
   </script>
