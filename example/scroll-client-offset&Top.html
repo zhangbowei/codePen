@@ -30,9 +30,9 @@
     .container {
       width: 500px;
       height: 500px;
-      position: relative;
+       position: relative;
       border: 30px solid grey;
-      top: 200px;
+       top: 200px;
       left: 200px;
       overflow-x: scroll;
       padding: 15px;
@@ -51,6 +51,11 @@
     a:active {
       background-color: black;
     }
+
+    .test {
+      border: 10px solid;
+      padding: 20px;
+    }
   </style>
 </head>
 
@@ -59,8 +64,10 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
   <a id="change">获取最新信息</a>
-  <div class="container">
-    <div id="box"></div>
+  <div class="test">
+    <div class="container">
+      <div id="box"></div>
+    </div>
   </div>
   <script>
     const template = ['scrollTop', 'offsetTop', 'clientTop'];
