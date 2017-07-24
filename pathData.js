@@ -6,6 +6,7 @@ example/borderTriangle.html
 example/calculate&flex&simple.html
 example/calculate&flex.html
 example/center.html
+example/client&scroll&offset.html
 example/datalist&raw.html
 example/debounce-throttle.html
 example/float.html
@@ -23,6 +24,7 @@ example/onClick&click.html
 example/over&enter.html
 example/page&offset&client.html
 example/ready&onload.html
+example/scroll-client-offset&Top.html
 example/simple.html
 example/swapDomNode.html
 example/table&calendar.html
