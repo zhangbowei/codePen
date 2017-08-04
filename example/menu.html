@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        .container {
+            height: 3000px;
+            background-color: grey;
+        }
+
+        .menu {
+            height: 0px;
+            width: 100px;
+            line-height: 1.2;
+            display: none;
+            background-color: white;
+            position: fixed;
+            /* 为何开启transition后，首次右键correctLocation不起作用，连续右键transition不起作用？ */
+               transition: height ease .4s;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+        <div class="menu">
+
+        </div>
+        <img>
+    </div>
+    <script>
+        function correctLocation(dom, e) {
+            function getOverflowCoord(dom, e) {
+                var res = { x: false, y: false };
+                if (window.innerWidth - e.clientX < dom.offsetWidth) {
+                    res.x = true;
+                }
+                if (window.innerHeight - e.clientY < dom.offsetHeight) {
+                    res.y = true;
+                }
+                return res;
+            }
+
+            const coord = getOverflowCoord(dom, e);
+            if (coord.x) {
+                dom.style.left = e.clientX - dom.offsetWidth + 'px';
+            } else {
+                dom.style.left = e.clientX - 15 + 'px';
+            }
+            if (coord.y) {
+                dom.style.top = e.clientY - dom.offsetHeight + 'px';
+            } else {
+                dom.style.top = e.clientY + 10 + 'px';
+            }
+
+        }
+
+        document.oncontextmenu = function () {
+            return false;
+        }
+        const menu = document.querySelector('.menu');
+        document.querySelector('.container').addEventListener('mousedown', function (e) {
+            if (e.button === 2) {
+                menu.style.height = '50px';
+                menu.style.display = 'block';
+                //动画效果，底部/右部 移动
+                requestAnimationFrame(function () {
+                    menu.style.height = '200px';
+                    console.log(menu.style.height);
+                    correctLocation(menu, e);
+                });
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
