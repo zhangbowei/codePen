@@ -51,7 +51,8 @@
                     } else {
                         //恢复原样式，停止动画
                         elm.style.cssText = original_css
-                        cancelAnimationFrame(time_id)
+                        //个人认为不调用requestAnimationFrame就行了
+                        // cancelAnimationFrame(time_id)
                     }
                 }
             }

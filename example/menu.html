@@ -35,7 +35,7 @@
             background-color: white;
             position: fixed;
             /* 为何开启transition后，首次右键correctLocation不起作用，连续右键transition不起作用？ */
-               transition: height ease 2.4s;
+            transition: height linear 2.4s;
         }
     </style>
 </head>
@@ -83,14 +83,38 @@
         const menu = document.querySelector('.menu');
         document.querySelector('.container').addEventListener('mousedown', function (e) {
             if (e.button === 2) {
-                menu.style.height = '50px';
                 menu.style.display = 'block';
+                menu.style.height = '50px';
                 //动画效果，底部/右部 移动
-                requestAnimationFrame(function () {
+                menu.style.transitionDuration = '0s';
+                console.log('start', Date.now());
+                // console.log(menu.offsetHeight);//50;
+                requestAnimationFrame(function (time_stamp) {
+                    console.log('raf', Date.now());
+                    console.log('raf-stamp', time_stamp);
+                    menu.style.transitionDuration = '1.4s';
                     menu.style.height = '200px';
-                    console.log(menu.style.height);
-                    correctLocation(menu, e);
+                    // console.log(menu.offsetHeight);//50;
+                    // correctLocation(menu, e);
                 });
+
+                const e = function () {
+                    var times = 0;
+                    const ans = function (stamp) {
+                        console.log('ans', Date.now());
+                        console.log('stamp', stamp);
+                        if (times === 5) return;
+                        else ++times;
+                        requestAnimationFrame(ans);
+                    }
+
+                    requestAnimationFrame(ans);
+                }
+
+                e();
+                // menu.style.transitionDuration = '0s';
+                // console.log('test');
+
             } else {
                 menu.style.display = 'none';
             }

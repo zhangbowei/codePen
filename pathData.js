@@ -21,12 +21,13 @@ example/lineHeight.html
 example/loading.html
 example/menu&flex.html
 example/menu&float.html
+example/menu.html
 example/onClick&click.html
 example/over&enter.html
 example/page&offset&client.html
 example/ready&onload.html
+example/requestAnimationFrame.html
 example/scroll-client-offset&Top.html
-example/simple.html
 example/swapDomNode.html
 example/table&calendar.html
 example/table&filldata.html
