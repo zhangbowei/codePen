@@ -3925,11 +3925,10 @@ jQuery.ready.then = readyList.then;
 
 // The ready event handler and self cleanup method
 function completed(e) {
-    console.log(e.type);
+    console.log(`jQuery: ${e.type}事件触发`);
 
-	document.removeEventListener( "DOMContentLoaded", completed );
     window.removeEventListener( "load", completed );
-    console.log('jQuery: DOMContentLoaded事件触发')
+    document.removeEventListener( "DOMContentLoaded", completed );
 	jQuery.ready();
 }
 
