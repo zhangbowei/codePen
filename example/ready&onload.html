@@ -12,20 +12,33 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../vendor/jquery.min.js"></script>
+    <script src="../vendor/jquery-forTest-NotChange.js"></script>
+    <style>
+        div {
+            background-color: grey;
+        }
+    </style>
 </head>
 
 <body>
     <script>
-        document.addEventListener( "DOMContentLoaded", function() {console.log('ready 捕获')}, true);
-        document.addEventListener( "DOMContentLoaded", function() {console.log('ready 冒泡A')});
-        $(function () { console.log("jquery ready"); });
-        document.addEventListener( "DOMContentLoaded", function() {console.log('ready 冒泡B')});
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log('原生DOMContentLoaded：捕获')
+        }, true);
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log('原生DOMContentLoaded：冒泡A')
+        });
+        $(function () { console.log("jQuery: Anonymous1"); });
+        $(document).ready(function () { console.log("jQuery: Anonymous2"); });
 
         window.addEventListener('load', function () { console.log('load 捕获'); }, true);
         window.addEventListener('load', function () { console.log('load 冒泡A'); });
         window.onload = function () { console.log('onload'); };
         window.addEventListener('load', function () { console.log('load 冒泡B'); });
+
+        document.onreadystatechange = function () {
+            console.log(document.readyState);
+        }
     </script>
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
