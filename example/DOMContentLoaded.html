@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .progress {
+            /* background: grey; */
+            width: 100px;
+            height: 10px;
+            /* margin: auto; */
+            border-left: 3px solid black;
+            transition: border-left-width 1.4s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="progress"></div>
+
+    <script>
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     // requestAnimationFrame(function() {
+        //     document.querySelector('.progress').style.borderLeftWidth = '100px';
+
+        //     // });
+        // });
+        window.addEventListener('load', function () {
+            document.querySelector('.progress').style.borderLeftWidth = '100px';
+        });
+    </script>
+</body>
+
+</html>
