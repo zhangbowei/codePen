@@ -10,6 +10,7 @@ example/center.html
 example/client&scroll&offset.html
 example/datalist&raw.html
 example/debounce-throttle.html
+example/DOMContentLoaded.html
 example/float.html
 example/forceCache.html
 example/formData.html
@@ -17,6 +18,7 @@ example/formSelect.html
 example/getElement&querySelector.html
 example/grail.html
 example/hidden.html
+example/input&sort.html
 example/lineHeight.html
 example/loading.html
 example/menu&flex.html
@@ -25,10 +27,10 @@ example/menu.html
 example/onClick&click.html
 example/over&enter.html
 example/page&offset&client.html
+example/progress.html
 example/ready&onload.html
 example/requestAnimationFrame.html
 example/scroll-client-offset&Top.html
-example/simple.html
 example/swapDomNode.html
 example/table&calendar.html
 example/table&filldata.html
