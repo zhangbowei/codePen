@@ -28,6 +28,7 @@ example/page&offset&client.html
 example/ready&onload.html
 example/requestAnimationFrame.html
 example/scroll-client-offset&Top.html
+example/simple.html
 example/swapDomNode.html
 example/table&calendar.html
 example/table&filldata.html
@@ -38,4 +39,5 @@ example/urlReqTest.html
 example/wing&grid.html
 example/wing.html
 index.html
+node_modules/jquery/src/var/rnothtmlwhite.js
 `;

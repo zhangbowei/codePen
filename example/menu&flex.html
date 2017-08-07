@@ -29,12 +29,14 @@
                 position: relative;
             }
 
-            li ul {
+            li div {
                 display: none;
-                /*position: absolute;
+                position: absolute;
                 width: 100%;
                 display: flex;
-                flex-direction: column;*/
+                flex-direction: column;
+                height: 100px;
+                background-color: grey;
             }
 
             li:hover ul {
@@ -43,6 +45,7 @@
                 display: flex;
                 flex-direction: column;
             }
+
             li:hover ul li{
             }
         </style>
@@ -53,14 +56,14 @@
         <![endif]-->
         <ul>
             <li><a>首页</a>
-                <ul>
-                    <li class="zbw"><a>商品</a></li>
+                <div>
+                    <!-- <li class="zbw"><a>商品</a></li>
                     <li><a>商品</a></li>
                     <li><a>商品</a></li>
                     <li><a>商品</a></li>
                     <li><a>商品</a></li>
-                    <li><a>商品</a></li>
-                </ul>
+                    <li><a>商品</a></li> -->
+                </div>
             </li>
             <li>首页</li>
             <li>首页</li>
