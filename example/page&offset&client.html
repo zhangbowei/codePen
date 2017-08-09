@@ -53,7 +53,12 @@
       console.log(JSON.stringify(template.reduce(function (prev, item, index) {
         return prev.concat([{ [item]: e[item] }]);
       }, [])));
-    })
+    });
+    // document.addEventListener('click', function (e) {
+    //   console.log(JSON.stringify(template.reduce(function (prev, item, index) {
+    //     return prev.concat([{ [item]: e[item] }]);
+    //   }, [])));
+    // })
   </script>
 </body>
 

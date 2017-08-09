@@ -31,6 +31,7 @@ example/progress.html
 example/ready&onload.html
 example/requestAnimationFrame.html
 example/scroll-client-offset&Top.html
+example/simple.html
 example/swapDomNode.html
 example/table&calendar.html
 example/table&filldata.html

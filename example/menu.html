@@ -95,9 +95,16 @@
             requestAnimationFrame(ans);
         }
 
-        document.oncontextmenu = function () {
-            return false;
-        }
+        // document.oncontextmenu = function () {
+        //     return false;
+        // }
+        // document.addEventListener('contextmenu', function(e) {
+        //     e.preventDefault();
+        // });
+        //无效，为什么？
+        // document.addEventListener('contextmenu', function(e) {
+        //     return false;
+        // });
         const menu = document.querySelector('.menu');
         document.querySelector('.container').addEventListener('mousedown', function (e) {
             if (e.button === 2) {
