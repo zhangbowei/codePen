@@ -92,9 +92,9 @@
                 // if (!start) {
                 handle = requestAnimationFrame(function () {
                     el.style.position = 'fixed';
-                    el.style.left = 1000+  'px';
+                    el.style.left = e.clientX - itemX + 'px';
                     el.style.top = e.clientY - itemY + 'px';
-                    console.log(el.clientWidth);
+                    console.log(e.clientX);
                     // start = false;
                 });
                 // start = true;

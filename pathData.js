@@ -11,6 +11,8 @@ example/client&scroll&offset.html
 example/datalist&raw.html
 example/debounce-throttle.html
 example/DOMContentLoaded.html
+example/drag&drag.html
+example/drag&simple.html
 example/float.html
 example/forceCache.html
 example/formData.html

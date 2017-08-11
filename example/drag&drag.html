@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        ul {
+            list-style: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        ul li {
+            height: 20px;
+            width: 500px;
+        }
+
+        ul li:nth-child(2n) {
+            background-color: grey;
+        }
+
+        ul li:nth-child(2n-1) {
+            background-color: RGBA(0, 43, 54, 1.00);
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="wrapper">
+        <ul id="container">
+
+        </ul>
+
+    </div>
+    <script>
+        const container = document.querySelector('#container');
+        const dataArr = new Array(10).join().split('').map(function (item, index) { return index; });
+        let el;
+
+        dataArr.forEach(function (item) {
+            const li = document.createElement('li');
+
+            li.textContent = item;
+            li.draggable = true;
+            container.appendChild(li);
+        });
+
+        document.onselectstart = function () {
+            return false;
+        };
+
+        container.ondragend = function(e) {
+            //e.dataTransfer.setData()只能放字符串
+            // e.dataTransfer.setData('li', e.target);
+            el = e.target;
+        }
+        // 默认情况下,数据/元素不能在其他元素中被拖放。对于drop我们必须防止元素的默认处理
+        container.ondragover = function(e) {
+            e.preventDefault();
+        }
+
+        container.ondrop = function(e) {
+            container.insertBefore(el, e.target);
+        }
+    </script>
+
+</body>
+
+</html>
