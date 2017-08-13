@@ -51,7 +51,7 @@
         function fillDataInView(el, data) {
             function getHtml(dataArr, template) {
                 return dataArr.reduce(function (prev, item) {
-                    return prev.concat(template.replace(/{{}}/, item));
+                    return prev.concat(template.replace(/\{\{\}\}/, item));
                 }, ['<tr>']).concat(['</tr>']).join('');
             }
             function getMaxLen(dataObj) {

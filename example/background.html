@@ -21,9 +21,11 @@
             linear-gradient(to right, #607D8B 10px, #FFF 10px);
             background-size: 1px 20px, 20px 1px, 1px 20px, 20px 1px;
             background-repeat: repeat-y, repeat-x, repeat-y, repeat-x;
-            animation: bp 1s linear infinite;
+            /* animation: bp 1s linear infinite; */
+            animation: bp 1s linear 4;
             will-change: background-position;
             border-radius: 10px;
+            animation-play-state: paused;
         }
 
         @keyframes bp {
@@ -43,16 +45,29 @@
             border: 1px dashed #74bcfd;
             border-radius: 5px;
         }
+
+        .container {
+            margin: 20px;
+            padding: 20px;
+        }
     </style>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <div class="target"></div>
+    <div class="container">
+        <div class="target"></div>
+    </div>
     <div class="test"></div>
-
+    <script>
+        const el = document.querySelector('.target');
+        document.querySelector('.container').addEventListener('mouseover', function () {
+            el.style.willChange = 'background-position';
+            el.style.animationPlayState = 'running';
+        });
+        document.querySelector('.target').addEventListener('animationend', function () {
+            el.style.willChange = 'auto';
+        });
+    </script>
 </body>
 
 </html>

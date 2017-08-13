@@ -14,6 +14,7 @@ example/DOMContentLoaded.html
 example/drag&drag.html
 example/drag&simple.html
 example/float.html
+example/followingBox.html
 example/forceCache.html
 example/formData.html
 example/formSelect.html
