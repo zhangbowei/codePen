@@ -13,6 +13,7 @@ example/debounce-throttle.html
 example/DOMContentLoaded.html
 example/drag&drag.html
 example/drag&simple.html
+example/float&margin.html
 example/float.html
 example/followingBox.html
 example/forceCache.html
