@@ -10,9 +10,13 @@ example/center.html
 example/client&scroll&offset.html
 example/datalist&raw.html
 example/debounce-throttle.html
+example/dialog.html
+example/divResize.html
 example/DOMContentLoaded.html
 example/drag&drag.html
 example/drag&simple.html
+example/eluosi&game.html
+example/fileUpload.html
 example/float&margin.html
 example/float.html
 example/followingBox.html
@@ -31,6 +35,10 @@ example/menu.html
 example/onClick&click.html
 example/over&enter.html
 example/page&offset&client.html
+example/phone&rem.html
+example/phone&scale.html
+example/phone&viewport.html
+example/progress&animationiteration.html
 example/progress.html
 example/ready&onload.html
 example/requestAnimationFrame.html
@@ -42,6 +50,7 @@ example/table&filldata.html
 example/table&sortData.html
 example/table.html
 example/transition&autoHeight.html
+example/traverse.html
 example/urlReqTest.html
 example/wing&grid.html
 example/wing.html

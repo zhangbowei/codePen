@@ -1,0 +1,37 @@
+<input id="upload" type="file" />
+<button id="upload-btn"> upload </button>
+<button id="choose">replace input file</button>
+<script>
+    document.getElementById('upload-btn').onclick = function () {
+        var input = document.getElementById('upload');
+        var file = input.files[0];
+        var formData = new FormData();
+        forData.append('file', file);
+
+        fetch({
+
+            url: '/upload',
+
+            method: 'POST',
+
+            body: formData
+
+        }).then((d) => {
+            console.log('result is', d);
+            alert('上传完毕');
+        });
+    }
+
+    var fileInput = document.createElement('input');
+    var choose = document.querySelector('#choose');
+
+    fileInput.type = "file";
+    fileInput.onchange = function (e) {
+        parseFile(e);
+    }
+    choose.onclick = function (e) {
+        e.preventDefault();
+        fileInput.click();  //click触发事件
+    };
+
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html style="height: 100px; overflow: auto; margin-top: 100px;" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #container {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body style="height: 5000px" id="wrapper">
+    <div style=" width: 300px; height: 100px; background:#000;" id="box1"></div>
+    <div style=" width: 300px; height: 100px; background:red;" id="box2"></div>
+
+    <script>
+        function traverse(rootNode) {
+            function isLawful(node) {
+                if (node.getBoundingClientRect) {
+                    var infor = node.getBoundingClientRect();
+                    return infor.width > 50 && infor.height > 50;
+                }
+                return false;
+            }
+            var res = [];
+            isLawful(rootNode) ? res.push(rootNode) : null;
+            return Array.from(rootNode.childNodes).reduce(function (prev, item) {
+                return prev.concat(traverse(item));
+            }, res);
+        }
+        // function traverse(oNode) {
+        //     var aResult = [];
+        //     oNode = oNode || document.body;
+        //     if (oNode.style) {
+        //         var nWidth = window.parseInt(oNode.style.width, 10) || 0;
+        //         var nHeight = window.parseInt(oNode.style.height, 10) || 0;
+        //         if (nWidth > 50 && nHeight > 50) {
+        //             aResult.push(oNode);
+        //         }
+        //     }
+        //     var aChildNodes = oNode.childNodes;
+        //     if (aChildNodes.length > 0) {
+        //         for (var i = 0, l = aChildNodes.length; i < l; i++) {
+        //             var oTmp = aChildNodes[i];
+        //             aResult = aResult.concat(traverse(oTmp));
+        //         }
+        //     }
+        //     return aResult;
+        // }
+        function traverseCp(oNode) {
+            var aResult = [];
+            oNode = oNode || document.body;
+            if (oNode.style) {
+                var nWidth = window.parseInt(oNode.style.width, 10) || 0;
+                var nHeight = window.parseInt(oNode.style.height, 10) || 0;
+                if (nWidth > 50 && nHeight > 50) {
+                    aResult.push(oNode);
+                }
+            }
+            var aChildNodes = oNode.childNodes;
+            if (aChildNodes.length > 0) {
+                for (var i = 0, l = aChildNodes.length; i < l; i++) {
+                    var oTmp = aChildNodes[i];
+                    aResult = aResult.concat(traverse(oTmp));
+                }
+            }
+            return aResult;
+        }
+
+        console.log("myTraverse: ", traverse(document));
+        console.log("Traverse: ", traverseCp(document));
+    </script>
+</body>
+
+</html>

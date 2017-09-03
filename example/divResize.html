@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .text {
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            border: 3px solid black;
+            position: relative;
+            /* transition: all .4s ease; */
+        }
+
+        .tri {
+            border-right: 10px solid black;
+            border-left: 10px solid transparent;
+            /* border-bottom: 10px solid transparent; */
+            border-top: 10px solid transparent;
+            position: absolute;
+            /* left: 100%;
+                top: 100%; */
+            right: 0px;
+            bottom: 0px;
+            cursor: pointer;
+        }
+
+        #textarea {
+            width: 300px;
+            border: 1px solid #ccc;
+            min-height: 150px;
+            max-height: 300px;
+            overflow: auto;
+            font-size: 14px;
+            outline: none;
+            /*是否显示蓝色外边框*/
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="textarea" contenteditable="true"></div>
+    <div id="input" class="text">
+        <div id="tri" class="tri"></div>
+    </div>
+
+    <script>
+        function getValue(str) {
+            // var res = str.match(/\d+/)[0];
+            // return res;
+            return str;
+        }
+        const input = document.querySelector('#input');
+        const tri = document.querySelector('.tri');
+        let moveFlag = false;
+        let oldx = 0, oldy = 0;
+
+        tri.addEventListener('mousedown', function (event) {
+            moveFlag = true;
+            // oldx = event.pageX;
+            // oldy = event.pageY;
+        });
+        document.addEventListener('mousemove', function (event) {
+            if (moveFlag) {
+                /*1.movement*/
+                requestAnimationFrame(function () {
+                    input.style.width = getValue(input.offsetWidth) + +event.movementX + 'px';
+                    input.style.height = getValue(input.offsetHeight) + +event.movementY + "px";
+                });
+                /*2. old*/
+                // if (oldx && oldy) {
+                //     requestAnimationFrame(function () {
+                //         //content-box为content
+                //         //clientWidth = padding + content与content-box不等值
+                //         //offsetWidth = border + padding + content与border-box等值
+                //         input.style.width = input.offsetWidth + (event.pageX - oldx) + 'px';
+                //         input.style.height = input.offsetHeight + (event.pageY - oldy) + 'px';
+                //         oldx = event.pageX;
+                //         oldy = event.pageY;
+                //     });
+                // }
+            }
+        });
+        document.addEventListener('mouseup', function (event) {
+            moveFlag = false;
+        });
+    </script>
+</body>
+
+</html>

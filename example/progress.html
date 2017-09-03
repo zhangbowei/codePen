@@ -50,28 +50,26 @@
             };
         }
 
-        function ani(node, width, duration) {
-
-            var start, handle;
-            var tic = function (time_stamp) {
-                var diff = time_stamp - start;
-                if (diff < duration) {
-                    node.style.width = ~~(width * diff / duration) + 'px';
-                    handle = requestAnimationFrame(tic);
-                }
-            }
-
-            handle = requestAnimationFrame((time_stamp) => {
-                start = time_stamp;
-                tic(time_stamp);
-            });
-
-            return handle;
-        }
-
         var handle;
         var progress = document.querySelector('#progress');
         var offset = progress.offsetLeft * 2;
+
+        const ani = function (dom, width, duration) {
+            let start;
+            const tic = function (time_stamp) {
+                var diff = time_stamp - start;
+                if (diff < duration) {
+                    dom.style.width = (diff / duration * width) + 'px';
+                    handle = requestAnimationFrame(tic);
+                } else {
+                    // dom.style.width = '';
+                }
+            }
+            handle = requestAnimationFrame(function (time_stamp) {
+                start = time_stamp;
+                tic(time_stamp);
+            });
+        }
 
         document.onclick = throttle(function (e) {
             if (handle) {
