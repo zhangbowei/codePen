@@ -62,7 +62,7 @@
         const el = document.querySelector('.target');
         document.querySelector('.container').addEventListener('mouseover', function () {
             el.style.willChange = 'background-position';
-            el.style.animationPlayState = 'running';
+            setTimeout(() => el.style.animationPlayState = 'running');
         });
         document.querySelector('.target').addEventListener('animationend', function () {
             el.style.willChange = 'auto';

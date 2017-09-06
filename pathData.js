@@ -1,6 +1,7 @@
 const pathData = `example/adaptiveLayout&flex.html
 example/adaptiveLayout&float.html
 example/adaptiveLayout&inline-block.html
+example/appearanceModal.html
 example/background.html
 example/bind-on.html
 example/borderTriangle.html
@@ -27,6 +28,7 @@ example/getElement&querySelector.html
 example/grail.html
 example/hidden.html
 example/input&sort.html
+example/lazyLoadImg.html
 example/lineHeight.html
 example/loading.html
 example/menu&flex.html

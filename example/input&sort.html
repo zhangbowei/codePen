@@ -92,16 +92,17 @@
         function debounce(callbackFn, delay) {
             var timer;
 
-            if (timer) {
-                clearTimeout(timer);
-            } else {
-                return function () {
-                    var args = arguments;
-
-                    timer = setTimeout(() => {
-                        callbackFn.apply(this, args);
-                    }, delay);
+            return function () {
+                if (timer) {
+                    clearTimeout(timer);
                 }
+
+                var self = this;
+                var args = arguments;
+
+                timer = setTimeout(function() {
+                    callbackFn.apply(self, args);
+                }, delay);
             }
         }
 
