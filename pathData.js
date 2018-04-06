@@ -1,4 +1,4 @@
-const pathData = `const pathData = `example/adaptiveLayout&flex.html
+const pathData = `example/adaptiveLayout&flex.html
 example/adaptiveLayout&float.html
 example/adaptiveLayout&inline-block.html
 example/appearanceModal.html
@@ -58,4 +58,4 @@ example/wing&grid.html
 example/wing.html
 index.html
 node_modules/jquery/src/var/rnothtmlwhite.js
-`;`;
+`;
