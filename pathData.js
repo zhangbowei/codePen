@@ -9,6 +9,7 @@ example/calculate&flex&simple.html
 example/calculate&flex.html
 example/center.html
 example/client&scroll&offset.html
+example/coder.html
 example/datalist&raw.html
 example/debounce-throttle.html
 example/dialog.html
