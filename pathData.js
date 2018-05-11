@@ -1,4 +1,4 @@
-const pathData = `example/adaptiveLayout&flex.html
+const pathData = ``;ample/adaptiveLayout&flex.html
 example/adaptiveLayout&float.html
 example/adaptiveLayout&inline-block.html
 example/appearanceModal.html
