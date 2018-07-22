@@ -4,7 +4,7 @@ function processIframe(data, el) {
             if (!a) {
                 return a;
             }
-            return a.includes('rem') ? a : a = a + ',' + (parseInt(a) * ratio / 100).toFixed(2) + 'rem';
+            return a.includes('rem') ? a : a = a + ',' + (parseFloat(a) * ratio / 100).toFixed(2) + 'rem';
         }
         function changeTarget(target) {
             let [width, height] = [$(target).attr('data-width'), $(target).attr('data-height')];
@@ -61,21 +61,36 @@ function processIframe(data, el) {
         });
         //复制到剪切版
         doc.find('#screen').click((e) => {
-            const el = $(e.target);
-            const w = el.attr('data-width'), h = el.attr('data-height');
-            let value = '';
-            if (w && h) {
-                value = el.attr('data-width');
-                // setClipboardText(e, value);
-                doc.execCommand("Copy");
-                //区域
-            } else {
-                value = w ? w : (h ? h : '');
-            }
-            value = value.split(',')[1];
+            // const el = $(e.target);
+            // const w = el.attr('data-width'), h = el.attr('data-height');
+            // let value = '';
+            // if (w && h) {
+            //     value = el.attr('data-width');
+            //     // setClipboardText(e, value);
+            //     doc.execCommand("Copy");
+            //     //区域
+            // } else {
+            //     value = w ? w : (h ? h : '');
+            // }
+            // value = value.split(',')[1];
             //设置值
             //反馈
 
+        });
+        //css样式更改
+        const screen = doc.find('#screen');
+        doc.find('body').click((e) => {
+            const target = $(e.target);
+            if (target === screen || target.parent(screen)) {
+                const css = doc.find('#css');
+                let text = css.text();
+                if (text) {
+                    text = text.replace(/:.*?(\S+)px/, (all, item) => {
+                        return ': ' + (parseFloat(item) * ratio / 100).toFixed(2) + 'rem';
+                    });
+                    css.text(text);
+                }
+            }
         });
 
     }
