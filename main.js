@@ -85,7 +85,7 @@ function processIframe(data, el) {
                 const css = doc.find('#css');
                 let text = css.text();
                 if (text) {
-                    text = text.replace(/:.*?(\S+)px/, (all, item) => {
+                    text = text.replace(/:.*?(\S+)px/g, (all, item) => {
                         return ': ' + (parseFloat(item) * ratio / 100).toFixed(2) + 'rem';
                     });
                     css.text(text);
