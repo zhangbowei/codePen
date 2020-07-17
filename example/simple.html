@@ -1,44 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        /* * {
-            margin: 0;
-            padding: 0;
+        * {
+            margin: 0px;
+            padding: 0px;
             box-sizing: border-box;
-        } */
-
-        .flex {
-            width: 500px;
-            height: 50px;
-            border: 1px solid pink;
-            overflow:auto;
-            display: flex;
-            align-items: center;
         }
 
-        .flex-child {
-            min-width: 25%;
-            border: 1px solid violet;
-            margin: 0 5px;
-            flex: 0 1 25%;
-            display: flex;
+        .container {
+            margin: 0 auto;
+            background: RGBA(255, 160, 122, 0.40);
+            overflow: hidden;
         }
+
+        .box {
+            float: left;
+            width: 100%;
+        }
+
+        .main {
+            height: 100px;
+            padding: 0 230px 0 190px;
+            background: RGBA(255, 160, 122, 0.40);
+        }
+
+        .sideBar {
+            float: left;
+            height: 100px;
+            width: 190px;
+            margin-left: -100%;
+            background: RGBA(102, 205, 0, 1.00);
+        }
+
+        .aside {
+            float: left;
+            height: 100px;
+            width: 230px;
+            margin-left: -230px;
+            background: RGBA(202, 105, 0, 1.00);
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="flex">
-        <div class="flex-child">1</div>
-        <div class="flex-child">2</div>
-        <div class="flex-child">3</div>
-        <div class="flex-child">4</div>
-        <div class="flex-child">5</div>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <div class="container">
+        <div class="box">
+            <div class="main"></div>
+        </div>
+        <div class="sideBar"></div>
+        <div class="aside"></div>
     </div>
 </body>
 

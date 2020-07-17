@@ -40,6 +40,12 @@
       border-radius: 5px;
       overflow: hidden;
     }
+    .cal {
+        width: 300px;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+        border-radius: 5px;
+        overflow: hidden;
+    }
 
     .top {
       min-height: 40px;
@@ -49,6 +55,14 @@
       align-items: center;
       background-color: RGBA(204, 204, 204, 1.00);
     }
+    .top {
+        min-height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: RGBA(204, 204, 204, 1.00);
+    }
 
     .tool {
       width: 15px;
@@ -56,6 +70,12 @@
       border-radius: 50%;
       margin-left: 10px;
       box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    }
+    .tool {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        margin-left: 10px;
     }
 
     .max {
@@ -76,7 +96,22 @@
       color: white;
       background-color: grey;
     }
+    .middle {
+        min-height: 100px;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        color: white;
+        background-color: grey;
+    }
 
+    .result {
+      font-size: 4.5rem;
+      line-height: 1;
+      font-weight: 600;
+    }
     .result {
       font-size: 4.5rem;
       line-height: 1;
@@ -94,6 +129,12 @@
       background-color: RGBA(242, 242, 242, 0.40);
       cursor: pointer;
     }
+    .row {
+        display: flex;
+        flex-direction: row;
+        background-color: RGBA(204, 204, 204, 1.00);
+        cursor: pointer;
+    }
 
     .btn {
       flex: 1;
@@ -103,6 +144,16 @@
       border-left: none;
       border-bottom: none;
       text-align: center;
+    }
+
+    .btn {
+        flex: 1;
+        line-height: 50px;
+        font-size: 3rem;
+        border: 2px solid #FFF;
+        border-left: none;
+        border-bottom: none;
+        text-align: center;
     }
 
     .btn:hover {

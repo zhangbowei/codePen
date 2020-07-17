@@ -46,6 +46,11 @@
                 }
             }
         }
+        const domArr = document.querySelectorAll('li');
+        domArr.addEventListener('click', function(e) {
+            const node = e.target;
+            console.log(node.textContent);
+        });
 
         const box = document.querySelector('ul');
         box.addEventListener('click', function(event) {

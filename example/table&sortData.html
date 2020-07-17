@@ -115,6 +115,24 @@
                 loadDataOnDom(sortData(dataArr, target.dataset.key));
             }
         });
+
+        function on (parent, className, eventName, cb) {
+            parent.addEventListener(eventName, function(e) {
+                var target = e.target;
+                var currentTarget;
+
+                while(target) {
+                    if (target.getAttribute('class') === className) {
+                        currentTarget = target;
+                        break;
+                    } else {
+                        target = target.parentNode;
+                    }
+                }
+
+                cb.apply(currentTarget);
+            });
+        }
     </script>
 </body>
 

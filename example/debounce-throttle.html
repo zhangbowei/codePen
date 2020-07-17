@@ -87,6 +87,19 @@
             }
         }
 
+        function debounce(fn) {
+            var timer;
+            return function() {
+                if (timer) {
+                    clearTimeout(timer);
+                }
+
+                timer = setTimeout(() => {
+                    fn.apply(this, args);
+                }, delay);
+            }
+        }
+
         function throttle(fn, delay) {
             let previous = Date.now();
 
@@ -100,6 +113,19 @@
                     setTimeout(() => {
                         fn.apply(this, args);
                     });
+                }
+            }
+        }
+
+        function throttle(fn, delay) {
+            var start = Date.now();
+            return function () {
+                var end = Date.now();
+                if (end - start > delay) {
+                    setTimeout(() => {
+                        fn.apply(this, args);
+                    });
+                    start = end;
                 }
             }
         }
