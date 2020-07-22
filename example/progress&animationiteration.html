@@ -18,6 +18,25 @@
                 background-color: grey;
                 overflow: hidden;
             }
+            .container {
+                height: 8px;
+                width: 600px;
+                border-radius: 4px;
+                overflow: hidden;
+            }
+            .progress {
+                height: 100%;
+                width: 0px;
+                animation: bgWidth 1s ease-out;
+            }
+            @keyframes bgWidth{
+                from {
+                    width: 0px;
+                }
+                to {
+                    width: 100%;
+                }
+            }
             .progress {
                 height: 100%;
                 width: 0px;
